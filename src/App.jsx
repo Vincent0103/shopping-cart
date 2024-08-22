@@ -1,12 +1,13 @@
-import BgWallpaperJPG from "./assets/bgHomepage.jpg";
 import { ShoppingCart } from "lucide-react";
+import BgWallpaperJPG from "./assets/bgHomepage.jpg";
+import BrandLogo from "./assets/logo.png";
 
 function App() {
   return (
     <div className="relative flex justify-center items-center h-screen w-screen">
       <nav className="fixed inset-0 h-16 w-full bg-[#1C1918]/60 flex justify-between items-center px-44 z-10 shadow-2xl">
-        <div className="bg-black w-24 h-12 flex justify-center items-center">
-          <p className="font-black text-4xl">soz.</p>
+        <div className="bg-[#DFB095] w-24 h-12 p-2 flex justify-center items-center">
+          <img src={BrandLogo} alt="" />
         </div>
         <ul className="flex justify-center items-center font-semibold gap-28 text-xl">
           <li className="cursor-pointer">Home</li>
