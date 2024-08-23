@@ -2,6 +2,7 @@ import { ShoppingCart } from "lucide-react";
 import BgWallpaperJPG from "./assets/bgHomepage.jpg";
 import BrandLogo from "./assets/logo.png";
 import CategoriesShowcase from "./categoriesShowcase/CategoriesShowcase";
+import AbstractWallpaper from "./assets/abstractWallpaperBlued.jpg";
 
 function App() {
   return (
@@ -46,21 +47,24 @@ function App() {
               type="button"
             >
               <p
+                style={{
+                  backgroundImage: `url("${AbstractWallpaper}")`
+                }}
                 className="text-4xl max-lg:text-2xl max-sm:text-base font-bold z-0 -skew-x-[25deg]
-            skew-y-[5deg] w-56 h-16 max-lg:w-36 max-lg:h-10 max-sm:w-24 max-sm:h-6 bg-[#302724]
-            border-2 border-[#261F1D] rounded-md flex justify-center items-center
+            skew-y-[5deg] w-56 h-16 max-lg:w-36 max-lg:h-10 max-sm:w-24 max-sm:h-6 bg-[#2b3a43]
+            border-2 border-[#192228] rounded-md flex justify-center items-center
             transition-transform group-hover:translate-x-1.5 group-hover:translate-y-1.5
             max-sm:group-hover:translate-x-1 max-sm:group-hover:translate-y-1"
               >
                 Shop Now
               </p>
               <div
-                className="absolute size-full bg-[#302724]/60 top-1 left-1 max-sm:top-0.5 max-sm:left-0.5
+                className="absolute size-full bg-[#0f1010]/60 top-1 left-1 max-sm:top-0.5 max-sm:left-0.5
                 rounded-md -z-[1] -skew-x-[25deg] skew-y-[5deg] transition-transform group-hover:translate-x-0.5
                 group-hover:translate-y-0.5"
               ></div>
               <div
-                className="absolute size-full bg-[#302724]/30 top-2 left-2 max-sm:top-1 max-sm:left-1
+                className="absolute size-full bg-[#0f1010]/30 top-2 left-2 max-sm:top-1 max-sm:left-1
                 rounded-md -z-[1] -skew-x-[25deg] skew-y-[5deg]"
               ></div>
             </button>

@@ -7,7 +7,7 @@ const Product = ({
   imgDirection,
 }) => {
   const Picture = () => (
-    <picture className={`${additionalImgStyles} pointer-events-none`}>
+    <picture className={`${additionalImgStyles} pointer-events-none select-none`}>
       <source srcSet={imgSrcs[0]} type="image/webp" />
       <img className="object-cover" src={imgSrcs[1]} alt="" />
     </picture>
