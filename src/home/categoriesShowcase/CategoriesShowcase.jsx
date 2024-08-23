@@ -1,11 +1,12 @@
 import Product from "./Product";
-import HeadphonesPNG from "../assets/headphones.png";
-import HeadphonesWEBP from "../assets/headphones.webp";
-import LaptopPNG from "../assets/laptop.png";
-import LaptopWEBP from "../assets/laptop.webp";
-import SpeakerPNG from "../assets/speaker.png";
-import SpeakerWEBP from "../assets/speaker.webp";
-import abstractWallpaper from "../assets/abstractWallpaper.jpg";
+import HeadphonesPNG from "../../assets/headphones.png";
+import HeadphonesWEBP from "../../assets/headphones.webp";
+import LaptopPNG from "../../assets/laptop.png";
+import LaptopWEBP from "../../assets/laptop.webp";
+import SpeakerPNG from "../../assets/speaker.png";
+import SpeakerWEBP from "../../assets/speaker.webp";
+import abstractWallpaper from "../../assets/abstractWallpaper.jpg";
+import { Link } from "react-router-dom";
 
 const CategoriesShowcase = () => (
   <section className="relative w-full bg-[#161f24]">
@@ -43,7 +44,7 @@ const CategoriesShowcase = () => (
           additionalImgStyles={
             "relative size-[25%] max-xl:size-52 max-md:size-36 max-sm:size-28 flex justify-center items-center"
           }
-          />
+        />
         <Product
           imgSrcs={[SpeakerWEBP, SpeakerPNG]}
           text={"SPEAKERS"}
@@ -63,14 +64,16 @@ const CategoriesShowcase = () => (
       max-2xl:h-20"
     >
       <div className="flex w-full max-w-screen-2xl items-center justify-center">
-        <button
-          type="button"
-          className="group rounded-xl border-2 border-[#4E433C] bg-[#2D2825] px-6 py-2 shadow-md"
-        >
-          <h2 className="text-3xl font-semibold text-white transition-transform group-hover:scale-[102%] max-2xl:text-xl max-lg:text-lg">
-            Shop Now!
-          </h2>
-        </button>
+        <Link to="/shop">
+          <button
+            type="button"
+            className="group rounded-xl border-2 border-[#4E433C] bg-[#2D2825] px-6 py-2 shadow-md"
+          >
+            <h2 className="text-3xl font-semibold text-white transition-transform group-hover:scale-[102%] max-2xl:text-xl max-lg:text-lg">
+              Shop Now
+            </h2>
+          </button>
+        </Link>
       </div>
     </div>
   </section>

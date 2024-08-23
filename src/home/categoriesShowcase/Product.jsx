@@ -1,17 +1,19 @@
+import PropTypes from "prop-types";
+
 const Product = ({
   imgSrcs,
   alt,
   text,
-  additionalImgStyles,
-  additionalContainerStyles,
   imgDirection,
+  additionalImgStyles = "",
+  additionalContainerStyles = "",
 }) => {
   const Picture = () => (
     <picture
-      className={`${additionalImgStyles} pointer-events-none select-none z-[1] transition-transform group-hover:scale-105`}
+      className={`${additionalImgStyles} pointer-events-none z-[1] select-none transition-transform group-hover:scale-105`}
     >
       <source srcSet={imgSrcs[0]} type="image/webp" />
-      <img className="object-cover" src={imgSrcs[1]} alt="" />
+      <img className="object-cover" src={imgSrcs[1]} alt={alt} />
     </picture>
   );
 
@@ -33,7 +35,7 @@ const Product = ({
       } ${
         additionalContainerStyles
           ? `${additionalContainerStyles} mb-32 max-xl:mb-16 max-md:mb-10 max-sm:mb-8`
-          : "my-32 max-xl:my-16 max-md:my-10 max-sm:my-8"
+          : "my-24 max-xl:my-12 max-md:my-8 max-sm:my-4"
       }
       group`}
     >
@@ -50,6 +52,15 @@ const Product = ({
       )}
     </button>
   );
+};
+
+Product.propTypes = {
+  imgSrcs: PropTypes.arrayOf(PropTypes.string).isRequired,
+  alt: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  imgDirection: PropTypes.string,
+  additionalImgStyles: PropTypes.string,
+  additionalContainerStyles: PropTypes.string,
 };
 
 export default Product;
