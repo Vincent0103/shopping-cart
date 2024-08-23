@@ -17,40 +17,60 @@ const CategoriesShowcase = () => (
       className="absolute inset-0 size-full opacity-40"
     ></div>
     <div
-      className="bg-[#81A7CA]/50 text-black
-    w-full h-28 max-2xl:h-20 max-lg:h-12 px-20 flex justify-center items-center
-    backdrop-blur-sm shadow-lg"
+      className="flex h-28
+    w-full items-center justify-center bg-[#81A7CA]/50 px-20 text-black shadow-lg backdrop-blur-sm
+    max-2xl:h-20 max-lg:h-12"
     >
-      <div className="max-w-screen-2xl w-full flex items-center">
-        <h2 className="text-5xl max-2xl:text-3xl max-lg:text-xl font-extrabold">
+      <div className="flex w-full max-w-screen-2xl items-center">
+        <h2 className="text-5xl font-extrabold max-2xl:text-3xl max-lg:text-xl">
           We sell bunch of...
         </h2>
       </div>
     </div>
-    <div className={`flex flex-col justify-center items-center`}>
-      <div className="max-w-screen-2xl w-full flex flex-col justify-center items-center">
+    <div className={`flex flex-col items-center justify-center`}>
+      <div className="flex w-full max-w-screen-2xl flex-col items-center justify-center">
         <Product
           imgSrcs={[HeadphonesWEBP, HeadphonesPNG]}
           text={"HEADPHONES"}
+          alt={"Headphones"}
           additionalImgStyles={"absolute -top-full left-[45%] size-[40%]"}
         />
         <Product
           imgSrcs={[LaptopWEBP, LaptopPNG]}
           text={"LAPTOPS"}
+          alt={"Laptop"}
           imgDirection={"left"}
           additionalImgStyles={
             "relative size-[25%] max-xl:size-52 max-md:size-36 max-sm:size-28 flex justify-center items-center"
           }
-        />
+          />
         <Product
           imgSrcs={[SpeakerWEBP, SpeakerPNG]}
           text={"SPEAKERS"}
+          alt={"Speakers"}
           imgDirection={"right"}
           additionalImgStyles={
             "relative size-[25%] max-xl:size-52 max-md:size-36 max-sm:size-28 flex justify-center items-center"
           }
           additionalContainerStyles={"mt-6 max-2xl:mt-0"}
         />
+      </div>
+    </div>
+    <div
+      className="flex h-28
+      w-full items-center justify-center bg-[#060708]/50 px-20
+      shadow-lg backdrop-blur-sm
+      max-2xl:h-20"
+    >
+      <div className="flex w-full max-w-screen-2xl items-center justify-center">
+        <button
+          type="button"
+          className="group rounded-xl border-2 border-[#4E433C] bg-[#2D2825] px-6 py-2 shadow-md"
+        >
+          <h2 className="text-3xl font-semibold text-white transition-transform group-hover:scale-[102%] max-2xl:text-xl max-lg:text-lg">
+            Shop Now!
+          </h2>
+        </button>
       </div>
     </div>
   </section>
