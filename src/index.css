@@ -25,11 +25,11 @@
   }
 
   .stroke-sm {
-    text-shadow: 0.1vw 0 #6392aa, -0.1vw 0 #6392aa, 0 0.1vw #6392aa, 0 -0.1vw #6392aa,
-      0.1vw 0.1vw #6392aa, -0.1vw -0.1vw #6392aa, 0.1vw -0.1vw #6392aa, -0.1vw 0.1vw #6392aa;
+    text-shadow: 0.1vw 0 #A09BFD, -0.1vw 0 #A09BFD, 0 0.1vw #A09BFD, 0 -0.1vw #A09BFD,
+      0.1vw 0.1vw #A09BFD, -0.1vw -0.1vw #A09BFD, 0.1vw -0.1vw #A09BFD, -0.1vw 0.1vw #A09BFD;
   }
 
   .text-shadow-white {
-    text-shadow: 0 0 1vw rgba(255, 255, 255, 0.6);
+    text-shadow: 0 0 1vw rgba(236, 236, 248, 0.6);
   }
 }

@@ -9,7 +9,7 @@ import abstractWallpaper from "../../assets/abstractWallpaper.jpg";
 import { Link } from "react-router-dom";
 
 const CategoriesShowcase = () => (
-  <section className="relative w-full bg-[#161f24]">
+  <section className="relative w-full bg-background-900">
     <div
       style={{
         backgroundImage: `url(${abstractWallpaper})`,
@@ -19,7 +19,7 @@ const CategoriesShowcase = () => (
     ></div>
     <div
       className="flex h-28
-    w-full items-center justify-center bg-[#81A7CA]/50 px-20 text-black shadow-lg backdrop-blur-sm
+    w-full items-center justify-center bg-primary-200/50 px-20 text-text-900 shadow-lg backdrop-blur-sm
     max-2xl:h-20 max-lg:h-12"
     >
       <div className="flex w-full max-w-screen-2xl items-center">
@@ -59,7 +59,7 @@ const CategoriesShowcase = () => (
     </div>
     <div
       className="flex h-28
-      w-full items-center justify-center bg-[#060708]/50 px-20
+      w-full items-center justify-center bg-background-950/50 px-20
       shadow-lg backdrop-blur-sm
       max-2xl:h-20"
     >
@@ -67,7 +67,7 @@ const CategoriesShowcase = () => (
         <Link to="/shop">
           <button
             type="button"
-            className="group rounded-xl border-2 border-[#4E433C] bg-[#2D2825] px-6 py-2 shadow-md"
+            className="group rounded-xl border-2 border-accent-600 bg-accent-400 px-6 py-2 shadow-md"
           >
             <h2 className="text-3xl font-semibold text-white transition-transform group-hover:scale-[102%] max-2xl:text-xl max-lg:text-lg">
               Shop Now
