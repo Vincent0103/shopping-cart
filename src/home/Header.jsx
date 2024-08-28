@@ -15,7 +15,7 @@ const Header = () => (
       <h1 className="flex flex-col text-[6vw] font-black leading-[1.1] tracking-wide">
         <span>
           <span className="stroke-sm font-jost text-[#080c12]">Seamless</span>{" "}
-          Tech,
+          Things,
         </span>
         <span>
           <span className="text-shadow-white font-harmond">Pure</span>{" "}

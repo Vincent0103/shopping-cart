@@ -10,7 +10,7 @@ const Navbar = ({ displayedPageName }) => {
 
   return (
     <nav
-      aria-label="Main" 
+      aria-label="Main"
       className="fixed inset-0 z-10 flex h-20 w-full items-center justify-between
     border-b-2 border-b-background-700/40 bg-background-950/60 px-44 shadow-2xl backdrop-blur-2xl"
     >

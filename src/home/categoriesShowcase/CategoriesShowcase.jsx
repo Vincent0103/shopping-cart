@@ -1,10 +1,10 @@
 import Product from "./Product";
 import HeadphonesPNG from "../../assets/headphones.png";
 import HeadphonesWEBP from "../../assets/headphones.webp";
-import LaptopPNG from "../../assets/laptop.png";
-import LaptopWEBP from "../../assets/laptop.webp";
-import SpeakerPNG from "../../assets/speaker.png";
-import SpeakerWEBP from "../../assets/speaker.webp";
+import RingsPNG from "../../assets/rings.png";
+import RingsWEBP from "../../assets/rings.webp";
+import CarharttPNG from "../../assets/carhartt.png";
+import CarharttWEBP from "../../assets/carhartt.webp";
 import abstractWallpaper from "../../assets/abstractWallpaper.jpg";
 import { Link } from "react-router-dom";
 
@@ -32,28 +32,28 @@ const CategoriesShowcase = () => (
       <div className="flex w-full max-w-screen-2xl flex-col items-center justify-center">
         <Product
           imgSrcs={[HeadphonesWEBP, HeadphonesPNG]}
-          text={"HEADPHONES"}
-          alt={"Headphones"}
-          additionalImgStyles={"absolute -top-full left-[45%] size-[40%]"}
+          text={"ELECTRONICS"}
+          alt={"Electronics"}
+          additionalImgStyles={"absolute -top-full left-[38%] size-[40%]"}
         />
         <Product
-          imgSrcs={[LaptopWEBP, LaptopPNG]}
-          text={"LAPTOPS"}
-          alt={"Laptop"}
+          imgSrcs={[RingsWEBP, RingsPNG]}
+          text={"JEWELRY"}
+          alt={"Jewelry"}
           imgDirection={"left"}
           additionalImgStyles={
-            "relative size-[25%] max-xl:size-52 max-md:size-36 max-sm:size-28 flex justify-center items-center"
+            "relative size-[25%] -left-16 max-xl:size-52 max-xl:-left-10 max-md:size-36 max-md:-left-6 max-sm:size-28 max-sm:-left-2 flex justify-center items-center"
           }
         />
         <Product
-          imgSrcs={[SpeakerWEBP, SpeakerPNG]}
-          text={"SPEAKERS"}
-          alt={"Speakers"}
+          imgSrcs={[CarharttWEBP, CarharttPNG]}
+          text={"CLOTHES"}
+          alt={"Clothes"}
           imgDirection={"right"}
           additionalImgStyles={
-            "relative size-[25%] max-xl:size-52 max-md:size-36 max-sm:size-28 flex justify-center items-center"
+            "relative size-[25%] -right-10 max-xl:size-52 max-md:size-36 max-md:-right-2 max-sm:size-28 flex justify-center items-center"
           }
-          additionalContainerStyles={"mt-6 max-2xl:mt-0"}
+          additionalContainerStyles={"mt-0"}
         />
       </div>
     </div>

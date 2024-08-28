@@ -10,18 +10,6 @@ function App() {
     setDisplayedPageName(location.pathname);
   }, [location.pathname]);
 
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products/category/electronics",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify()
-      }
-    )
-  }, []);
-
   return (
     <>
       <Navbar displayedPageName={displayedPageName} />
