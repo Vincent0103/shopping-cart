@@ -1,13 +1,17 @@
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 const Product = ({
   imgSrcs,
   alt,
   text,
+  url,
   imgDirection,
   additionalImgStyles = "",
   additionalContainerStyles = "",
 }) => {
+  const navigate = useNavigate();
+
   const Picture = () => (
     <picture
       className={`${additionalImgStyles} pointer-events-none z-[1] select-none transition-transform group-hover:scale-105`}
@@ -38,6 +42,7 @@ const Product = ({
           : "my-24 max-xl:my-12 max-md:my-8 max-sm:my-4"
       }
       group`}
+      onClick={() => navigate(url)}
     >
       {imgDirection === "right" ? (
         <>
@@ -58,6 +63,7 @@ Product.propTypes = {
   imgSrcs: PropTypes.arrayOf(PropTypes.string).isRequired,
   alt: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
   imgDirection: PropTypes.string,
   additionalImgStyles: PropTypes.string,
   additionalContainerStyles: PropTypes.string,
