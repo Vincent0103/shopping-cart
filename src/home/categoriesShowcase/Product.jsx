@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Product = ({
   imgSrcs,
@@ -10,8 +10,6 @@ const Product = ({
   additionalImgStyles = "",
   additionalContainerStyles = "",
 }) => {
-  const navigate = useNavigate();
-
   const Picture = () => (
     <picture
       className={`${additionalImgStyles} pointer-events-none z-[1] select-none transition-transform group-hover:scale-105`}
@@ -32,30 +30,31 @@ const Product = ({
   );
 
   return (
-    <button
-      type="button"
-      className={`relative flex items-center justify-center max-lg:gap-2 ${
-        imgDirection ? "w-full" : ""
-      } ${
-        additionalContainerStyles
-          ? `${additionalContainerStyles} mb-32 max-xl:mb-16 max-md:mb-10 max-sm:mb-8`
-          : "my-24 max-xl:my-12 max-md:my-8 max-sm:my-4"
-      }
-      group`}
-      onClick={() => navigate(url)}
-    >
-      {imgDirection === "right" ? (
-        <>
-          <H3 />
-          <Picture />
-        </>
-      ) : (
-        <>
-          <Picture />
-          <H3 />
-        </>
-      )}
-    </button>
+    <Link to={url}>
+      <button
+        type="button"
+        className={`relative flex items-center justify-center max-lg:gap-2 ${
+          imgDirection ? "w-full" : ""
+        } ${
+          additionalContainerStyles
+            ? `${additionalContainerStyles} mb-32 max-xl:mb-16 max-md:mb-10 max-sm:mb-8`
+            : "my-24 max-xl:my-12 max-md:my-8 max-sm:my-4"
+        }
+        group`}
+      >
+        {imgDirection === "right" ? (
+          <>
+            <H3 />
+            <Picture />
+          </>
+        ) : (
+          <>
+            <Picture />
+            <H3 />
+          </>
+        )}
+      </button>
+    </Link>
   );
 };
 
