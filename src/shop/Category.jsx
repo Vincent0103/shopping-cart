@@ -16,24 +16,32 @@ const Category = ({ categoryName = "" }) => {
     "womens-clothing": "women's clothing",
   };
 
-  const fetchData = async () => {
-    const url =
-      categoryName === ""
-        ? "https://fakestoreapi.com/products"
-        : `https://fakestoreapi.com/products/category/${categoriesMapper[categoryName]}`;
-
-    try {
-      const response = await fetch(url);
-      const result = await response.json();
-      setCurrentData(result);
-    } catch (error) {
-      setError(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   useEffect(() => {
+    const fetchData = async () => {
+      const url =
+        categoryName === ""
+          ? "https://fakestoreapi.com/products"
+          : `https://fakestoreapi.com/products/category/${categoriesMapper[categoryName]}`;
+
+      try {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error(`HTTP error: status ${response.status}`);
+        }
+
+        const result = await response.json();
+        setCurrentData(result);
+        setError(null);
+      } catch (error) {
+        setError(error);
+        setCurrentData(null);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
     setIsLoading(true);
     fetchData();
   }, [categoryName]);
