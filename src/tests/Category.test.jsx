@@ -7,7 +7,7 @@ vi.mock("../shop/Card.jsx", () => ({
 }));
 
 describe("Shop Category", () => {
-  describe("fetch", () => {
+  describe("Fetch", () => {
     beforeEach(() => {
       fetch = vi.fn();
     });
@@ -49,6 +49,15 @@ describe("Shop Category", () => {
       expect(fetch).toHaveBeenCalledWith(
         "https://fakestoreapi.com/products/category/jewelery",
       );
+
+      const errorMessage = screen.getByText(/error: .*/i);
+      expect(errorMessage).toBeInTheDocument();
+    });
+
+    it("shows an error if the fetching url is incorrect", async () => {
+      await act(async () => {
+        render(<Category categoryName="strings" />)
+      });
 
       const errorMessage = screen.getByText(/error: .*/i);
       expect(errorMessage).toBeInTheDocument();
