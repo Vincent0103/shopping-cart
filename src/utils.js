@@ -4,7 +4,8 @@ const toUrlSafe = (text) => {
   return text.trim().toLowerCase().replaceAll(unsafeCharsRegex, "").replaceAll(spaceRegex, "-");
 }
 
-const toTitle = (text) => text.split("-").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
-
+const toTitle = (text) => text.trim().split(/-|\s/g)
+  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+  .join(" ");
 
 export { toUrlSafe, toTitle };
