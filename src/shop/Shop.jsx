@@ -28,14 +28,8 @@ const Shop = () => {
   if (!validCategories.includes(name)) name = "";
 
   return (
-    <div
-      style={{ backgroundImage: `url(${BgPurpleNoise})` }}
-      className="size-full"
-    >
-      <div
-        style={{ backgroundImage: `url(${BgPurpleNoise})` }}
-        className="relative top-20 grid size-full grid-cols-[1fr_3fr]"
-      >
+    <div className="size-full">
+      <div className="relative top-20 grid size-full grid-cols-[1fr_3fr]">
         <nav aria-label="Category" className="w-full p-3">
           <div className="min-h-calc-100vh-96px w-full rounded-xl bg-accent-900 shadow-xl">
             <div className="flex justify-end rounded-xl bg-accent-500 py-6 pr-10 shadow-xl">
@@ -66,7 +60,7 @@ const Shop = () => {
             </ul>
           </div>
         </nav>
-        <section className="flex w-full flex-wrap gap-8 p-3 size-min">
+        <section className="flex size-min w-full flex-wrap gap-8 p-3">
           <Category categoryName={name} />
         </section>
       </div>

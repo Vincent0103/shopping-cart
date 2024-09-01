@@ -32,4 +32,16 @@
   .text-shadow-white {
     text-shadow: 0 0 1vw rgba(236, 236, 248, 0.6);
   }
+
+  .shadow-accent-btn {
+    box-shadow: 0 0 17.5px rgba(46, 37, 218, 25%);
+  }
+
+  .shadow-accent-btn:hover {
+    box-shadow: 0 0 17.5px rgba(46, 37, 218, 50%);
+  }
+
+  .bg-purple-noise {
+    background-image: url("./assets/purpleNoise.jpg");
+  }
 }

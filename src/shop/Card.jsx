@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import { ShoppingCart } from "lucide-react";
 import { toUrlSafe } from "../utils";
 
-const Card = ({ imgSrc, alt, title, desc, price }) => {
+const Card = ({ imgSrc, alt, title, desc, price, productCategory }) => {
   return (
     <Link
       to={`/product/${toUrlSafe(title)}`}
-      state={{ imgSrc, alt, title, desc, price }}
+      state={{ imgSrc, alt, title, desc, price, productCategory }}
     >
       <div
         className="group relative flex h-96 w-72 cursor-pointer flex-col
