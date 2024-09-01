@@ -17,6 +17,8 @@ const Category = ({ categoryName = "" }) => {
   };
 
   useEffect(() => {
+    const controller = new AbortController();
+
     const fetchData = async () => {
       const url =
         categoryName === ""
@@ -24,17 +26,17 @@ const Category = ({ categoryName = "" }) => {
           : `https://fakestoreapi.com/products/category/${categoriesMapper[categoryName]}`;
 
       try {
-        const response = await fetch(url);
+        const response = await fetch(url, { signal: controller.signal });
 
         if (!response.ok) {
           throw new Error(`HTTP error: status ${response.status}`);
         }
 
         const result = await response.json();
-        console.log(result);
         setCurrentData(result);
         setError(null);
       } catch (error) {
+        if (error.name === "AbortError") return;
         setError(error);
         setCurrentData(null);
       } finally {
@@ -44,13 +46,13 @@ const Category = ({ categoryName = "" }) => {
 
     setIsLoading(true);
     fetchData();
+
+    return () => controller.abort();
   }, [categoryName]);
 
-  if (error) {
-    return <Error error={error} />;
-  } else if (isLoading) {
-    return <Loader />;
-  } else if (currentData) {
+  if (isLoading) return <Loader />;
+  else if (error) return <Error error={error} />;
+  else if (currentData) {
     return currentData.map((data) => (
       <Card
         key={data.id}

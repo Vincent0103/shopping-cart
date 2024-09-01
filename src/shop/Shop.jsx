@@ -2,6 +2,7 @@ import BgPurpleNoise from "../assets/purpleNoise.jpg";
 import { Link, useParams } from "react-router-dom";
 import Category from "./Category";
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 
 const Li = ({ text, linkTo, isSelected = false }) => (
   <Link className="flex size-full items-center justify-center" to={linkTo}>
@@ -16,7 +17,7 @@ const Li = ({ text, linkTo, isSelected = false }) => (
 
 const Shop = () => {
   let { name } = useParams();
-
+  
   const validCategories = [
     "electronics",
     "jewelry",
