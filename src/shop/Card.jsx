@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { ShoppingCart } from "lucide-react";
-import { hyphenate } from "../utils";
+import { toUrlSafe } from "../utils";
 
 const Card = ({ imgSrc, alt, title, desc, price }) => {
   return (
     <Link
-      to={`/product/${hyphenate(title)}`}
+      to={`/product/${toUrlSafe(title)}`}
       state={{ imgSrc, alt, title, desc, price }}
     >
       <div

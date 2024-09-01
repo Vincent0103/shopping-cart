@@ -1,6 +1,10 @@
-const hyphenate = (text) => {
-  const spaceRegex = /\s+|\/|:|,|https|(\.[^\s]+|\.+)/g;
-  return text.trim().toLowerCase().replaceAll(spaceRegex, "-");
+const toUrlSafe = (text) => {
+  const unsafeCharsRegex = /\\|\/|:|,|'|https|(\.[^\s]+|\.+)/g
+  const spaceRegex = /\s+/g;
+  return text.trim().toLowerCase().replaceAll(unsafeCharsRegex, "").replaceAll(spaceRegex, "-");
 }
 
-export { hyphenate };
+const toTitle = (text) => text.split("-").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+
+
+export { toUrlSafe, toTitle };

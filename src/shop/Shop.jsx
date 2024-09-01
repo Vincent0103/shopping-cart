@@ -2,7 +2,6 @@ import BgPurpleNoise from "../assets/purpleNoise.jpg";
 import { Link, useParams } from "react-router-dom";
 import Category from "./Category";
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
 
 const Li = ({ text, linkTo, isSelected = false }) => (
   <Link className="flex size-full items-center justify-center" to={linkTo}>
@@ -17,7 +16,7 @@ const Li = ({ text, linkTo, isSelected = false }) => (
 
 const Shop = () => {
   let { name } = useParams();
-  
+
   const validCategories = [
     "electronics",
     "jewelry",
@@ -33,7 +32,7 @@ const Shop = () => {
       style={{ backgroundImage: `url(${BgPurpleNoise})` }}
       className="size-full"
     >
-      <section
+      <div
         style={{ backgroundImage: `url(${BgPurpleNoise})` }}
         className="relative top-20 grid size-full grid-cols-[1fr_3fr]"
       >
@@ -70,7 +69,7 @@ const Shop = () => {
         <section className="flex w-full flex-wrap gap-8 p-3 size-min">
           <Category categoryName={name} />
         </section>
-      </section>
+      </div>
     </div>
   );
 };

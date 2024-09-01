@@ -61,6 +61,7 @@ const Category = ({ categoryName = "" }) => {
         title={data.title}
         desc={data.description}
         price={`${data.price}$`}
+        productCategory={categoryName}
       />
     ));
   }
