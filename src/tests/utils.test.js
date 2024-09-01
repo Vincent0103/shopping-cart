@@ -30,5 +30,7 @@ describe("toUrlSafe", () => {
 
   it("handles a text that is itself an url", () => {
     expect(toUrlSafe("https://google.com/")).toBe("google");
+    expect(toUrlSafe("http://localhost:5173/product/fjallraven---foldsack-no-1-"))
+      .toBe("localhost5173productfjallraven---foldsack-no-1-");
   })
 });

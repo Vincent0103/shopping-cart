@@ -1,5 +1,5 @@
 const toUrlSafe = (text) => {
-  const unsafeCharsRegex = /\\|\/|:|,|'|https|(\.[^\s]+|\.+)/g
+  const unsafeCharsRegex = /\\|\/|:|,|'|https?|(\.[^\s]+|\.+)/g
   const spaceRegex = /\s+/g;
   return text.trim().toLowerCase().replaceAll(unsafeCharsRegex, "").replaceAll(spaceRegex, "-");
 }
