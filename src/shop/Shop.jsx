@@ -66,7 +66,7 @@ const Shop = () => {
             </ul>
           </div>
         </nav>
-        <section className="flex w-full flex-wrap gap-8 p-3">
+        <section className="flex w-full flex-wrap gap-8 p-3 size-min">
           <Category categoryName={name} />
         </section>
       </section>

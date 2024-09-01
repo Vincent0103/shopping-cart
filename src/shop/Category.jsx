@@ -16,7 +16,6 @@ const Category = ({ categoryName = "" }) => {
     "womens-clothing": "women's clothing",
   };
 
-
   useEffect(() => {
     const fetchData = async () => {
       const url =
@@ -32,6 +31,7 @@ const Category = ({ categoryName = "" }) => {
         }
 
         const result = await response.json();
+        console.log(result);
         setCurrentData(result);
         setError(null);
       } catch (error) {
@@ -55,8 +55,9 @@ const Category = ({ categoryName = "" }) => {
       <Card
         key={data.id}
         imgSrc={data.image}
-        alt={data.title}
+        alt={`Product: ${data.title}`}
         title={data.title}
+        desc={data.description}
         price={`${data.price}$`}
       />
     ));
