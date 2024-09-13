@@ -2,12 +2,18 @@ import { Link, useLocation } from "react-router-dom";
 import BgPurpleNoise from "../assets/purpleNoise.jpg";
 import { toTitle } from "../utils.js";
 import { Minus, Plus, ShoppingCart } from "lucide-react";
+import { useState } from "react";
 
 const Product = () => {
   const location = useLocation();
   const { imgSrc, alt, title, desc, price, productCategory } = location.state;
+  const [productAmount, setProductAmount] = useState(1);
 
-  console.log(productCategory);
+  const handlePlusOrMinusClick = (action) => {
+    if (action === "add") setProductAmount((prev) => prev + 1);
+    else if (productAmount - 1 >= 0) setProductAmount((prev) => prev - 1);
+  };
+
   return (
     <div
       style={{ backgroundImage: `url(${BgPurpleNoise})` }}
@@ -27,11 +33,15 @@ const Product = () => {
         </nav>
         <div className="flex size-full gap-20">
           <div className="flex h-full w-1/2 justify-end">
-            <img className="h-full object-cover rounded-sm" src={imgSrc} alt={alt} />
+            <img
+              className="h-full rounded-sm object-cover"
+              src={imgSrc}
+              alt={alt}
+            />
           </div>
           <div className="flex w-1/2 flex-col gap-6">
             <div className="flex flex-col items-start gap-3">
-              <h1 className="w-full h-[66px] overflow-hidden text-ellipsis text-nowrap text-6xl">
+              <h1 className="h-[66px] w-full overflow-hidden text-ellipsis text-nowrap text-6xl">
                 {title}
               </h1>
               <h2 className="text-3xl font-semibold">{price}</h2>
@@ -41,7 +51,7 @@ const Product = () => {
               <p className="text-2xl font-normal leading-normal">{desc}</p>
             </div>
             <div className="flex items-center gap-2">
-              <Plus size={40} color="#ececf8" />
+              <Plus className="cursor-pointer" size={40} color="#ececf8" onClick={() => handlePlusOrMinusClick("add")} />
               <input
                 className="flex size-12 items-center justify-center
               rounded-full border-2 border-accent-500 bg-background-100
@@ -49,14 +59,14 @@ const Product = () => {
                 type="text"
                 name=""
                 id=""
-                value={1}
+                value={productAmount}
               />
-              <Minus size={40} color="#ececf8" />
+              <Minus className="cursor-pointer" size={40} color="#ececf8" onClick={() => handlePlusOrMinusClick("remove")} />
             </div>
             <button
-              className="h-14 rounded-md bg-primary-500 px-4
-              flex items-center gap-4 text-2xl font-medium
-              shadow-accent-btn shadow-primary-500 transition-shadow
+              className="shadow-accent-btn flex h-14 items-center
+              gap-4 rounded-md bg-primary-500 px-4 text-2xl
+              font-medium shadow-primary-500 transition-shadow
               duration-100"
               type="submit"
             >
