@@ -3,12 +3,10 @@ import PropTypes from "prop-types";
 import { ShoppingCart } from "lucide-react";
 import { toUrlSafe } from "../utils";
 
-const Card = ({ imgSrc, alt, title, desc, price, productCategory }) => {
+const Card = (props) => {
+  const { imgSrc, alt, title, price } = props;
   return (
-    <Link
-      to={`/product/${toUrlSafe(title)}`}
-      state={{ imgSrc, alt, title, desc, price, productCategory }}
-    >
+    <Link to={`/product/${toUrlSafe(title)}`} state={{ ...props }}>
       <div
         className="group relative flex h-96 w-72 cursor-pointer flex-col
       items-center justify-center overflow-hidden rounded-lg border-2
@@ -44,11 +42,15 @@ const Card = ({ imgSrc, alt, title, desc, price, productCategory }) => {
 };
 
 Card.propTypes = {
-  imgSrc: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  desc: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
+  props: PropTypes.exact({
+    id: PropTypes.string.isRequired,
+    imgSrc: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    desc: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    productCategory: PropTypes.string.isRequired,
+  }),
 };
 
 export default Card;

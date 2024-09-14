@@ -1,4 +1,3 @@
-import BgPurpleNoise from "../assets/purpleNoise.jpg";
 import { Link, useParams } from "react-router-dom";
 import Category from "./Category";
 import PropTypes from "prop-types";

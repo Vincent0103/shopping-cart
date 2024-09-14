@@ -56,6 +56,7 @@ const Category = ({ categoryName = "" }) => {
     return currentData.map((data) => (
       <Card
         key={data.id}
+        id={data.id}
         imgSrc={data.image}
         alt={`Product: ${data.title}`}
         title={data.title}

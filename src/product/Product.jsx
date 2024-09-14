@@ -1,16 +1,17 @@
-import { Link, useLocation } from "react-router-dom";
-import BgPurpleNoise from "../assets/purpleNoise.jpg";
-import { toTitle } from "../utils.js";
-import { Minus, Plus, ShoppingCart } from "lucide-react";
 import { useContext, useState } from "react";
-import { AppContext } from "../AppContext.jsx";
+import { Link, useLocation } from "react-router-dom";
 import { produce } from "immer";
+import { v4 as uuid } from "uuid";
+import { Minus, Plus, ShoppingCart } from "lucide-react";
+import BgPurpleNoise from "../assets/purpleNoise.jpg";
+import { AppContext } from "../AppContext.jsx";
+import { toTitle } from "../utils.js";
 
 const Product = () => {
   const location = useLocation();
   const { setPopupCartState, setCart } = useContext(AppContext);
 
-  const { imgSrc, alt, title, desc, price, productCategory } = location.state;
+  const { id, imgSrc, alt, title, desc, price, productCategory } = location.state;
   const [productAmount, setProductAmount] = useState(1);
 
   const handlePlusOrMinusClick = (action) => {
@@ -22,7 +23,9 @@ const Product = () => {
     setPopupCartState((prev) => !prev);
     setCart(
       produce((draft) => {
+
         draft.unshift({
+          id,
           imgSrc,
           alt,
           title,

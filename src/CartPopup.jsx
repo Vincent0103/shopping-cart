@@ -4,11 +4,11 @@ import { AppContext } from "./AppContext";
 const ProductItem = ({ imgSrc, alt, title, productAmount }) => {
   return (
     <div className="flex h-12 w-full items-center justify-center rounded-md border-2 border-secondary-950/20 bg-secondary-950/40">
-      <div className="flex size-full items-center gap-3 border-r-2 border-secondary-950/20">
-        <img className="h-full" src={imgSrc} alt={alt} />
-        <h3 className="text-sm">{title}</h3>
+      <div className="flex size-5/6 items-center gap-3 border-r-2 border-secondary-950/20 px-3">
+        <img className="h-full object-contain flex justify-center items-center" src={imgSrc} alt={alt} />
+        <h3 className="text-sm overflow-hidden text-nowrap text-ellipsis">{title}</h3>
       </div>
-      <div className="flex size-14 items-center justify-center">
+      <div className="flex size-1/6 items-center justify-center">
         <h3 className="text-sm font-semibold">x{productAmount}</h3>
       </div>
     </div>
@@ -27,8 +27,8 @@ const CartPopup = () => {
       <div className="-mb-10 flex flex-col items-center justify-end gap-5 p-4">
         <h2 className="text-2xl font-bold">{cart.length} Products</h2>
         <div className="z-[1] flex h-44 w-full flex-col gap-3 overflow-y-auto">
-          {cart.map((product, index) => (
-            <ProductItem key={index} {...product} />
+          {cart.map((product) => (
+            <ProductItem key={product.id} {...product} />
           ))}
         </div>
       </div>
