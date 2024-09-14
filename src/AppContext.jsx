@@ -14,6 +14,7 @@ export const AppProvider = ({ children }) => {
       imgSrc: CarharttPNG,
       alt: "Carhartt",
       title: "Carhartt Shirt",
+      price: "44.99$",
       productAmount: 3,
     },
     {
@@ -21,6 +22,7 @@ export const AppProvider = ({ children }) => {
       imgSrc: RingsPNG,
       alt: "Rings",
       title: "Lovely Rings",
+      price: "356.75$",
       productAmount: 1,
     },
     {
@@ -28,6 +30,7 @@ export const AppProvider = ({ children }) => {
       imgSrc: HeadphonesPNG,
       alt: "Headphones",
       title: "Bombocat JBL",
+      price: "89.99$",
       productAmount: 5,
     },
   ]);

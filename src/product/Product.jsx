@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { produce } from "immer";
-import { v4 as uuid } from "uuid";
 import { Minus, Plus, ShoppingCart } from "lucide-react";
 import BgPurpleNoise from "../assets/purpleNoise.jpg";
 import { AppContext } from "../AppContext.jsx";
@@ -23,12 +22,12 @@ const Product = () => {
     setPopupCartState((prev) => !prev);
     setCart(
       produce((draft) => {
-
         draft.unshift({
           id,
           imgSrc,
           alt,
           title,
+          price,
           productAmount,
         });
       }),

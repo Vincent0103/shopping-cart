@@ -1,12 +1,25 @@
 import { useContext } from "react";
 import { AppContext } from "./AppContext";
 
-const ProductItem = ({ imgSrc, alt, title, productAmount }) => {
+const ProductItem = ({ imgSrc, alt, title, price, productAmount }) => {
   return (
-    <div className="flex h-12 w-full items-center justify-center rounded-md border-2 border-secondary-950/20 bg-secondary-950/40">
-      <div className="flex size-5/6 items-center gap-3 border-r-2 border-secondary-950/20 px-3">
-        <img className="h-full object-contain flex justify-center items-center" src={imgSrc} alt={alt} />
-        <h3 className="text-sm overflow-hidden text-nowrap text-ellipsis">{title}</h3>
+    <div
+      className="flex h-12 w-full items-center justify-center rounded-md
+    border-2 border-secondary-950/20 bg-secondary-950/40"
+    >
+      <div className="flex size-5/6 items-center gap-3 border-r-2
+      border-secondary-950/20 p-3">
+        <div className="flex size-9 items-center justify-center">
+          <img className="size-full object-contain" src={imgSrc} alt={alt} />
+        </div>
+        <div className="flex w-full flex-col justify-center overflow-hidden">
+          <h3 className="overflow-hidden text-ellipsis text-nowrap text-sm">
+            {title}
+          </h3>
+          <p className=" overflow-hidden text-ellipsis text-nowrap text-[10px] text-primary-200">
+            {price}
+          </p>
+        </div>
       </div>
       <div className="flex size-1/6 items-center justify-center">
         <h3 className="text-sm font-semibold">x{productAmount}</h3>
@@ -33,10 +46,13 @@ const CartPopup = () => {
         </div>
       </div>
       <div
-        className="relative z-0 flex h-28 w-full items-end justify-center
-      rounded-xl bg-gradient-to-t from-secondary-200/50 to-transparent p-3"
-      >
-        <h4 className="cursor-pointer text-lg font-extrabold text-text-900 hover:underline">
+        className="relative z-0 flex flex-col h-40 w-full justify-end
+        rounded-xl bg-gradient-to-t from-secondary-200/50 to-transparent"
+        >
+        <div className="p-3 border-y-2 border-secondary-700 font-medium">
+          <p>Total: 359.99$</p>
+        </div>
+        <h4 className="cursor-pointer text-lg font-extrabold text-text-900 hover:underline pt-3 mx-3 mb-3">
           CHECKOUT
         </h4>
       </div>

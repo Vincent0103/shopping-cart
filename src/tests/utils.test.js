@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { toTitle, toUrlSafe } from "../utils";
+import { calculateTotal, toTitle, toUrlSafe } from "../utils";
 
 describe("toUrlSafe", () => {
   it("converts a string to a url safe text", () => {
@@ -48,3 +48,22 @@ describe("toTitle", () => {
     expect(urlSafeStrings).toEqual(["Mens Clothing", "Sandisk Ssd Plus 1tb Internal Ssd   Sata Iii 6 Gbs"]);
   })
 });
+
+describe("calculateTotal", () => {
+  it("calculates the total based on an array of prices", () => {
+    const prices = ["44.99$", "356.75$", "89.99$"];
+    const bigPrices = ["236723.63$", "9$", "0.9237$"];
+    expect(calculateTotal(prices)).toBe("491.73$");
+    expect(calculateTotal(bigPrices)).toBe("236733.55$");
+  });
+
+  it("throws an error if the prices contains negative values", () => {
+    const badPrices = ["44.99$", "1736.001$", "-2.05$", "89.99$"];
+    expect(() => calculateTotal(badPrices)).toThrow("Cannot have negative prices: -2.05$");
+  });
+
+  it("calculates the total even if a price doesn't have a dollar sign or is not a string", () => {
+    const prices = ["44.99$", 1736.001, "2.05", "89.99$"];
+    expect(calculateTotal(prices)).toBe("1873.03$")
+  })
+})
