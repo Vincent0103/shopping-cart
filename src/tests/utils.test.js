@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { calculateTotal, toTitle, toUrlSafe } from "../utils";
+import { calculateTotal, priceToNumber, toTitle, toUrlSafe } from "../utils";
 
 describe("toUrlSafe", () => {
   it("converts a string to a url safe text", () => {
@@ -49,6 +49,20 @@ describe("toTitle", () => {
   })
 });
 
+describe("pricesToNumber", () => {
+  it("converts a price to a valid number datatype", () => {
+    let prices = ["44.99$", "356.75$", "89.99$"];
+    prices = prices.map((price) => priceToNumber(price));
+    expect(prices).toEqual([44.99, 356.75, 89.99]);
+  });
+
+  it("converts a price no matter the small inconsistencies", () => {
+    let prices = ["44.99  $", "356.75", 89.99];
+    prices = prices.map((price) => priceToNumber(price));
+    expect(prices).toEqual([44.99, 356.75, 89.99]);
+  })
+})
+
 describe("calculateTotal", () => {
   it("calculates the total based on an array of prices", () => {
     const prices = ["44.99$", "356.75$", "89.99$"];
@@ -61,9 +75,4 @@ describe("calculateTotal", () => {
     const badPrices = ["44.99$", "1736.001$", "-2.05$", "89.99$"];
     expect(() => calculateTotal(badPrices)).toThrow("Cannot have negative prices: -2.05$");
   });
-
-  it("calculates the total even if a price doesn't have a dollar sign or is not a string", () => {
-    const prices = ["44.99$", 1736.001, "2.05", "89.99$"];
-    expect(calculateTotal(prices)).toBe("1873.03$")
-  })
 })

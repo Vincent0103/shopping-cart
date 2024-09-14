@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "./AppContext";
+import { calculateTotal } from "./utils";
 
 const ProductItem = ({ imgSrc, alt, title, price, productAmount }) => {
   return (
@@ -7,8 +8,10 @@ const ProductItem = ({ imgSrc, alt, title, price, productAmount }) => {
       className="flex h-12 w-full items-center justify-center rounded-md
     border-2 border-secondary-950/20 bg-secondary-950/40"
     >
-      <div className="flex size-5/6 items-center gap-3 border-r-2
-      border-secondary-950/20 p-3">
+      <div
+        className="flex size-5/6 items-center gap-3 border-r-2
+      border-secondary-950/20 p-3"
+      >
         <div className="flex size-9 items-center justify-center">
           <img className="size-full object-contain" src={imgSrc} alt={alt} />
         </div>
@@ -46,13 +49,13 @@ const CartPopup = () => {
         </div>
       </div>
       <div
-        className="relative z-0 flex flex-col h-40 w-full justify-end
+        className="relative z-0 flex h-40 w-full flex-col justify-end
         rounded-xl bg-gradient-to-t from-secondary-200/50 to-transparent"
-        >
-        <div className="p-3 border-y-2 border-secondary-700 font-medium">
-          <p>Total: 359.99$</p>
+      >
+        <div className="border-y-2 border-secondary-700 p-3 font-medium">
+          <p>Total: {calculateTotal(cart.map(({ price }) => price))}</p>
         </div>
-        <h4 className="cursor-pointer text-lg font-extrabold text-text-900 hover:underline pt-3 mx-3 mb-3">
+        <h4 className="mx-3 mb-3 cursor-pointer pt-3 text-lg font-extrabold text-text-900 hover:underline">
           CHECKOUT
         </h4>
       </div>
