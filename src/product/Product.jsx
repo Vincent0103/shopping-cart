@@ -22,14 +22,18 @@ const Product = () => {
     setPopupCartState((prev) => !prev);
     setCart(
       produce((draft) => {
-        draft.unshift({
-          id,
-          imgSrc,
-          alt,
-          title,
-          price,
-          productAmount,
-        });
+        const itemIndex = draft.findIndex(({ id: draftId }) => draftId === id);
+        if (itemIndex !== -1) draft[itemIndex].productAmount += productAmount;
+        else {
+          draft.unshift({
+            id,
+            imgSrc,
+            alt,
+            title,
+            price,
+            productAmount,
+          });
+        }
       }),
     );
   };

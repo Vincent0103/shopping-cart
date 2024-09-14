@@ -9,30 +9,30 @@ export const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const [popupCartState, setPopupCartState] = useState(false);
   const [cart, setCart] = useState([
-    {
-      id: uuid(),
-      imgSrc: CarharttPNG,
-      alt: "Carhartt",
-      title: "Carhartt Shirt",
-      price: "44.99$",
-      productAmount: 3,
-    },
-    {
-      id: uuid(),
-      imgSrc: RingsPNG,
-      alt: "Rings",
-      title: "Lovely Rings",
-      price: "356.75$",
-      productAmount: 1,
-    },
-    {
-      id: uuid(),
-      imgSrc: HeadphonesPNG,
-      alt: "Headphones",
-      title: "Bombocat JBL",
-      price: "89.99$",
-      productAmount: 5,
-    },
+    // {
+    //   id: uuid(),
+    //   imgSrc: CarharttPNG,
+    //   alt: "Carhartt",
+    //   title: "Carhartt Shirt",
+    //   price: "44.99$",
+    //   productAmount: 3,
+    // },
+    // {
+    //   id: uuid(),
+    //   imgSrc: RingsPNG,
+    //   alt: "Rings",
+    //   title: "Lovely Rings",
+    //   price: "356.75$",
+    //   productAmount: 1,
+    // },
+    // {
+    //   id: uuid(),
+    //   imgSrc: HeadphonesPNG,
+    //   alt: "Headphones",
+    //   title: "Bombocat JBL",
+    //   price: "89.99$",
+    //   productAmount: 5,
+    // },
   ]);
 
   return (
