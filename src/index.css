@@ -44,4 +44,12 @@
   .bg-purple-noise {
     background-image: url("./assets/purpleNoise.jpg");
   }
+
+  .bg-gradient-radial {
+    background: radial-gradient(#4137fb, #0a0396);
+  }
+
+  .shadow-extraxl-still {
+    box-shadow: 0 0 40px rgba(65, 55, 251, .25);
+  }
 }

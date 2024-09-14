@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import BgPurpleNoise from "../assets/purpleNoise.jpg";
 import { toTitle } from "../utils.js";
-import { Minus, Plus, ShoppingCart } from "lucide-react";
+import { Minus, Plus, ShoppingCart, Check } from "lucide-react";
 import { useState } from "react";
 
 const Product = () => {
@@ -11,7 +11,7 @@ const Product = () => {
 
   const handlePlusOrMinusClick = (action) => {
     if (action === "add") setProductAmount((prev) => prev + 1);
-    else if (productAmount - 1 >= 0) setProductAmount((prev) => prev - 1);
+    else if (productAmount - 1 > 0) setProductAmount((prev) => prev - 1);
   };
 
   return (
@@ -51,7 +51,12 @@ const Product = () => {
               <p className="text-2xl font-normal leading-normal">{desc}</p>
             </div>
             <div className="flex items-center gap-2">
-              <Plus className="cursor-pointer" size={40} color="#ececf8" onClick={() => handlePlusOrMinusClick("add")} />
+              <Plus
+                className="cursor-pointer"
+                size={40}
+                color="#ececf8"
+                onClick={() => handlePlusOrMinusClick("add")}
+              />
               <input
                 className="flex size-12 items-center justify-center
               rounded-full border-2 border-accent-500 bg-background-100
@@ -61,7 +66,12 @@ const Product = () => {
                 id=""
                 value={productAmount}
               />
-              <Minus className="cursor-pointer" size={40} color="#ececf8" onClick={() => handlePlusOrMinusClick("remove")} />
+              <Minus
+                className="cursor-pointer"
+                size={40}
+                color="#ececf8"
+                onClick={() => handlePlusOrMinusClick("remove")}
+              />
             </div>
             <button
               className="shadow-accent-btn flex h-14 items-center
