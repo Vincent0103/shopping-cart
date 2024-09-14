@@ -1,5 +1,5 @@
 const toUrlSafe = (text) => {
-  const unsafeCharsRegex = /\\|\/|:|,|'|https?|(\.[^\s]+|\.+)/g
+  const unsafeCharsRegex = /\\|\/|:|,|'|https?|(\.[^\s]+|\.+)/g;
   const spaceRegex = /\s+/g;
   return text.trim().toLowerCase().replaceAll(unsafeCharsRegex, "").replaceAll(spaceRegex, "-");
 }
@@ -20,9 +20,9 @@ const priceToNumber = (price) => {
 const calculateTotal = (prices) => {
   return prices
     .reduce((prev, curr) => {
-      const num = priceToNumber(curr);
-      if (num < 0) throw Error(`Cannot have negative prices: ${curr}`);
-      return num + prev;
+      if (typeof curr === "string") throw Error(`Make sure ${curr} is correctly formatted in a float/int type (e.g. 49.99)`);
+      else if (curr < 0) throw Error(`Cannot have negative prices: ${curr}`);
+      return curr + prev;
     }, 0)
     .toFixed(2) + "$";
 }

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "./AppContext";
-import { calculateTotal } from "./utils";
+import { calculateTotal, priceToNumber } from "./utils";
 
 const ProductItem = ({ imgSrc, alt, title, price, productAmount }) => {
   return (
@@ -53,7 +53,7 @@ const CartPopup = () => {
         rounded-xl bg-gradient-to-t from-secondary-200/50 to-transparent"
       >
         <div className="border-y-2 border-secondary-700 p-3 font-medium">
-          <p>Total: {calculateTotal(cart.map(({ price }) => price))}</p>
+          <p>Total: {priceToNumber(cart.map(({ price }) => priceToNumber(price)))}</p>
         </div>
         <h4 className="mx-3 mb-3 cursor-pointer pt-3 text-lg font-extrabold text-text-900 hover:underline">
           CHECKOUT
