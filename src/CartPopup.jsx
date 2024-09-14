@@ -33,7 +33,10 @@ const ProductItem = ({ imgSrc, alt, title, price, productAmount }) => {
 
 const CartPopup = () => {
   const { cart } = useContext(AppContext);
-  console.log(cart);
+  const products = cart.map(({ price, productAmount }) => [
+    priceToNumber(price),
+    productAmount,
+  ]);
 
   return (
     <section
@@ -53,7 +56,7 @@ const CartPopup = () => {
         rounded-xl bg-gradient-to-t from-secondary-200/50 to-transparent"
       >
         <div className="border-y-2 border-secondary-700 p-3 font-medium">
-          <p>Total: {priceToNumber(cart.map(({ price }) => priceToNumber(price)))}</p>
+          <p>Total: {calculateTotal(products)}</p>
         </div>
         <h4 className="mx-3 mb-3 cursor-pointer pt-3 text-lg font-extrabold text-text-900 hover:underline">
           CHECKOUT

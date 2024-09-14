@@ -65,24 +65,25 @@ describe("pricesToNumber", () => {
 
 describe("calculateTotal", () => {
   it("calculates the total based on an array of prices", () => {
-    let prices = ["44.99$", "356.75$", "89.99$"];
-    prices = prices.map((price) => priceToNumber(price));
+    let prices = [[44.99, 2], [356.75, 1], [89.99, 1]];
+    let bigPrices = [[236723.63, 1], [9, 18], [0.9237, 43]];
 
-    let bigPrices = ["236723.63$", "9$", "0.9237$"];
-    bigPrices = bigPrices.map((price) => priceToNumber(price));
-
-    expect(calculateTotal(prices)).toBe("491.73$");
-    expect(calculateTotal(bigPrices)).toBe("236733.55$");
+    expect(calculateTotal(prices)).toBe("536.72$");
+    expect(calculateTotal(bigPrices)).toBe("236925.35$");
   });
 
   it("throws an error if the prices contains negative values", () => {
-    let badPrices = ["44.99$", "1736.001$", "-2.05$", "89.99$"];
-    badPrices = badPrices.map((price) => priceToNumber(price));
+    let badPrices = [[44.99, 2], [1736.001, 1], [-2.05, 7], [89.99, 343]];
     expect(() => calculateTotal(badPrices)).toThrow("Cannot have negative prices: -2.05");
   });
 
   it("throws an error if the prices contain a badly formatted price", () => {
-    let badPrices = ["44.99$", 1736.001, "-2.05$", "89.99"];
-    expect(() => calculateTotal(badPrices)).toThrow("Make sure 44.99$ is correctly formatted in a float/int type (e.g. 49.99)");
-  })
+    let badPrices = [[44.99, 2], ["1736.001$", 1], ["2.05", 7], [89.99, 343]];
+    expect(() => calculateTotal(badPrices)).toThrow("Make sure 1736.001$ is correctly formatted in a float/int type (e.g. 49.99)");
+  });
+
+  it("throws an error if one or more sub-arrays contain invalid length", () => {
+    let badPrices = [[44.99, 2], [1736.001, 1], [2.05, 7, 8], [89.99, 343]];
+    expect(() => calculateTotal(badPrices)).toThrow("products contains a sub-array with invalid amount of data: [2.05,7,8]");
+  });
 })

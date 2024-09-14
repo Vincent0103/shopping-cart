@@ -17,12 +17,14 @@ const priceToNumber = (price) => {
   return price;
 }
 
-const calculateTotal = (prices) => {
-  return prices
+const calculateTotal = (products) => {
+  // products param data should be like this: [[price, amount], [price, amount], ...]
+  return products
     .reduce((prev, curr) => {
-      if (typeof curr === "string") throw Error(`Make sure ${curr} is correctly formatted in a float/int type (e.g. 49.99)`);
-      else if (curr < 0) throw Error(`Cannot have negative prices: ${curr}`);
-      return curr + prev;
+      if (curr.length !== 2) throw Error(`products contains a sub-array with invalid amount of data: [${curr}]`);
+      if (typeof curr[0] === "string") throw Error(`Make sure ${curr[0]} is correctly formatted in a float/int type (e.g. 49.99)`);
+      else if (curr[0] < 0) throw Error(`Cannot have negative prices: ${curr[0]}`);
+      return curr[0] * curr[1] + prev;
     }, 0)
     .toFixed(2) + "$";
 }
