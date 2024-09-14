@@ -1,17 +1,35 @@
 import { Link, useLocation } from "react-router-dom";
 import BgPurpleNoise from "../assets/purpleNoise.jpg";
 import { toTitle } from "../utils.js";
-import { Minus, Plus, ShoppingCart, Check } from "lucide-react";
-import { useState } from "react";
+import { Minus, Plus, ShoppingCart } from "lucide-react";
+import { useContext, useState } from "react";
+import { AppContext } from "../AppContext.jsx";
+import { produce } from "immer";
 
 const Product = () => {
   const location = useLocation();
+  const { setPopupCartState, setCart } = useContext(AppContext);
+
   const { imgSrc, alt, title, desc, price, productCategory } = location.state;
   const [productAmount, setProductAmount] = useState(1);
 
   const handlePlusOrMinusClick = (action) => {
     if (action === "add") setProductAmount((prev) => prev + 1);
     else if (productAmount - 1 > 0) setProductAmount((prev) => prev - 1);
+  };
+
+  const handleAddToCartClick = () => {
+    setPopupCartState((prev) => !prev);
+    setCart(
+      produce((draft) => {
+        draft.unshift({
+          imgSrc,
+          alt,
+          title,
+          productAmount,
+        });
+      }),
+    );
   };
 
   return (
@@ -74,6 +92,7 @@ const Product = () => {
               />
             </div>
             <button
+              onClick={handleAddToCartClick}
               className="shadow-accent-btn flex h-14 items-center
               gap-4 rounded-md bg-primary-500 px-4 text-2xl
               font-medium shadow-primary-500 transition-shadow
@@ -89,10 +108,5 @@ const Product = () => {
     </div>
   );
 };
-
-// Product.propTypes = {
-//   imgSrc: PropTypes.string.isRequired,
-//   alt: PropTypes.string.isRequired,
-// };
 
 export default Product;

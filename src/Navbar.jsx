@@ -2,14 +2,11 @@ import { ShoppingCart } from "lucide-react";
 import BrandLogo from "./assets/logo.png";
 import { Link } from "react-router-dom";
 import CartPopup from "./CartPopup";
-import { useState } from "react";
+import { useContext } from "react";
+import { AppContext } from "./AppContext";
 
 const Navbar = ({ displayedPageName }) => {
-  const [doPopupCart, setDoPopupCart] = useState(false);
-
-  const handleDoPopupCart = () => {
-    setDoPopupCart((prev) => !prev);
-  };
+  const { popupCartState, setPopupCartState } = useContext(AppContext);
 
   const getTextColorClasses = (stringTest) =>
     displayedPageName.includes(stringTest)
@@ -43,12 +40,15 @@ const Navbar = ({ displayedPageName }) => {
               Shop
             </li>
           </Link>
-          <li onClick={handleDoPopupCart} className="cursor-pointer">
+          <li
+            onClick={() => setPopupCartState((prev) => !prev)}
+            className="cursor-pointer"
+          >
             <ShoppingCart size={24} />
           </li>
         </ul>
       </nav>
-      {doPopupCart && <CartPopup />}
+      {popupCartState && <CartPopup />}
     </>
   );
 };
