@@ -41,6 +41,7 @@ const Navbar = ({ displayedPageName }) => {
             </li>
           </Link>
           <li
+            id="cart-navlink"
             onClick={() => setPopupCartState((prev) => !prev)}
             className="cursor-pointer"
           >

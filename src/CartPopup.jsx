@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AppContext } from "./AppContext";
 import { calculateTotal, priceToNumber } from "./utils";
 
@@ -32,14 +32,30 @@ const ProductItem = ({ imgSrc, alt, title, price, productAmount }) => {
 };
 
 const CartPopup = () => {
-  const { cart } = useContext(AppContext);
+  const { cart, popupCartState, setPopupCartState } = useContext(AppContext);
+
   const products = cart.map(({ price, productAmount }) => [
     priceToNumber(price),
     productAmount,
   ]);
 
+  useEffect(() => {
+    const handleNotCartPopupClick = (e) => {
+      const hasParentWithId = e.target.closest(
+        "#cart-popup, #add-to-cart-btn, #cart-navlink",
+      );
+
+      if (popupCartState && !hasParentWithId) setPopupCartState(false);
+    };
+
+    window.addEventListener("click", handleNotCartPopupClick);
+
+    return () => window.removeEventListener("click", handleNotCartPopupClick);
+  }, [popupCartState]);
+
   return (
     <section
+      id="cart-popup"
       className="bg-gradient-radial shadow-extraxl-still fixed right-0 top-20 z-10 m-5
     w-[350px] rounded-xl border-2 border-indigo-800"
     >

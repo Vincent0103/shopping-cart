@@ -19,7 +19,7 @@ const Product = () => {
   };
 
   const handleAddToCartClick = () => {
-    setPopupCartState((prev) => !prev);
+    setPopupCartState(true);
     setCart(
       produce((draft) => {
         const itemIndex = draft.findIndex(({ id: draftId }) => draftId === id);
@@ -98,6 +98,7 @@ const Product = () => {
               />
             </div>
             <button
+              id="add-to-cart-btn"
               onClick={handleAddToCartClick}
               className="shadow-accent-btn flex h-14 items-center
               gap-4 rounded-md bg-primary-500 px-4 text-2xl
