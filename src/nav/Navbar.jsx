@@ -1,12 +1,12 @@
 import { ShoppingCart } from "lucide-react";
-import BrandLogo from "./assets/logo.png";
+import BrandLogo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import CartPopup from "./CartPopup";
 import { useContext } from "react";
-import { AppContext } from "./AppContext";
+import { AppContext } from "../AppContext";
 
 const Navbar = ({ displayedPageName }) => {
-  const { popupCartState, setPopupCartState } = useContext(AppContext);
+  const { setPopupCartState } = useContext(AppContext);
 
   const getTextColorClasses = (stringTest) =>
     displayedPageName.includes(stringTest)
@@ -16,6 +16,7 @@ const Navbar = ({ displayedPageName }) => {
   return (
     <>
       <nav
+        id="main-navbar"
         aria-label="Main"
         className="fixed inset-0 z-10 flex h-20 w-full items-center justify-between
       border-b-2 border-b-background-700/40 bg-background-950/60 px-44 shadow-2xl backdrop-blur-2xl"
@@ -41,7 +42,6 @@ const Navbar = ({ displayedPageName }) => {
             </li>
           </Link>
           <li
-            id="cart-navlink"
             onClick={() => setPopupCartState((prev) => !prev)}
             className="cursor-pointer"
           >

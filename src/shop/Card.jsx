@@ -26,7 +26,7 @@ const Card = (props) => {
         </div>
         <div className="pointer-events-none absolute inset-0 h-72 max-h-72 w-full bg-black opacity-0 group-hover:opacity-50"></div>
         <div className="grid size-full grid-cols-2 grid-rows-2 gap-3 overflow-hidden border-t-2 border-t-background-200 px-4 py-2">
-          <h5 className="col-start-1 col-end-3 self-end overflow-hidden text-ellipsis text-nowrap text-lg">
+          <h5 className="col-start-1 col-end-3 self-end overflow-hidden text-ellipsis text-nowrap text-lg font-medium">
             {title}
           </h5>
           <p className="h-min text-sm">{price}</p>

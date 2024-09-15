@@ -65,10 +65,10 @@ const Product = () => {
           </div>
           <div className="flex w-1/2 flex-col gap-6">
             <div className="flex flex-col items-start gap-3">
-              <h1 className="h-[66px] w-full overflow-hidden text-ellipsis text-nowrap text-6xl">
+              <h1 className="h-[66px] w-full font-jost overflow-hidden text-ellipsis text-nowrap text-6xl">
                 {title}
               </h1>
-              <h2 className="text-3xl font-semibold">{price}</h2>
+              <h2 className="text-2xl font-semibold">{price}</h2>
             </div>
             <hr className="bg-white" />
             <div>
@@ -88,6 +88,7 @@ const Product = () => {
                 type="text"
                 name=""
                 id=""
+                readOnly
                 value={productAmount}
               />
               <Minus
@@ -107,7 +108,7 @@ const Product = () => {
               type="submit"
             >
               <ShoppingCart size={32} />
-              <p>Add to Cart</p>
+              <p className="font-semibold">Add to Cart</p>
             </button>
           </div>
         </div>

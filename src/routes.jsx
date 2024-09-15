@@ -3,6 +3,7 @@ import App from "./App";
 import Home from "./home/Home";
 import Shop from "./shop/Shop";
 import Product from "./product/Product";
+import Checkout from "./checkout/Checkout";
 
 const routes = [
   {
@@ -14,6 +15,7 @@ const routes = [
       { path: "home", element: <Home /> },
       { path: "shop?/:name", element: <Shop /> },
       { path: "product/:name", element: <Product /> },
+      { path: "checkout", element: <Checkout /> },
     ],
   },
 ];

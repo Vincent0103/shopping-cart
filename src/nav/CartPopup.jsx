@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import { AppContext } from "./AppContext";
-import { calculateTotal, priceToNumber } from "./utils";
+import { AppContext } from "../AppContext";
+import { calculateTotal, priceToNumber } from "../utils";
+import { Link } from "react-router-dom";
 
 const ProductItem = ({ imgSrc, alt, title, price, productAmount }) => {
   return (
@@ -42,16 +43,18 @@ const CartPopup = () => {
   useEffect(() => {
     const handleNotCartPopupClick = (e) => {
       const hasParentWithId = e.target.closest(
-        "#cart-popup, #add-to-cart-btn, #cart-navlink",
+        "#cart-popup, #add-to-cart-btn, #main-navbar",
       );
 
-      if (popupCartState && !hasParentWithId) setPopupCartState(false);
+      if ((popupCartState && !hasParentWithId) || e.target.closest("#checkout-link")) setPopupCartState(false);
     };
 
     window.addEventListener("click", handleNotCartPopupClick);
 
     return () => window.removeEventListener("click", handleNotCartPopupClick);
   }, [popupCartState]);
+
+  const total = calculateTotal(products);
 
   const transitioningClasses = popupCartState
     ? "translate-z-idle opacity-100 pointer-events-auto"
@@ -76,11 +79,16 @@ const CartPopup = () => {
         rounded-xl bg-gradient-to-t from-secondary-200/50 to-transparent"
       >
         <div className="border-y-2 border-secondary-700 p-3 font-medium">
-          <p>Total: {calculateTotal(products)}</p>
+          <p>Total: {total}</p>
         </div>
-        <h4 className="mx-3 mb-3 cursor-pointer pt-3 text-lg font-extrabold text-text-900 hover:underline">
-          CHECKOUT
-        </h4>
+        <Link
+          to={"/checkout"}
+          state={{ total }}
+          id="checkout-link"
+          className="text-text-900 hover:underline"
+        >
+          <h4 className="mx-3 mb-3 pt-3 text-lg font-extrabold">CHECKOUT</h4>
+        </Link>
       </div>
     </section>
   );

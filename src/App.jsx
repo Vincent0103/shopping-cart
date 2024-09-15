@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AppProvider } from "./AppContext";
 import { Outlet, useLocation } from "react-router-dom";
-import Navbar from "./Navbar";
+import Navbar from "./nav/Navbar";
 
 function App() {
   const [displayedPageName, setDisplayedPageName] = useState("/home");
