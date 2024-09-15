@@ -53,11 +53,15 @@ const CartPopup = () => {
     return () => window.removeEventListener("click", handleNotCartPopupClick);
   }, [popupCartState]);
 
+  const transitioningClasses = popupCartState
+    ? "translate-z-idle opacity-100 pointer-events-auto"
+    : "translate-z-back opacity-0 pointer-events-none";
+
   return (
     <section
       id="cart-popup"
-      className="bg-gradient-radial shadow-extraxl-still fixed right-0 top-20 z-10 m-5
-    w-[350px] rounded-xl border-2 border-indigo-800"
+      className={`bg-gradient-radial shadow-extraxl-still transition-slide fixed right-0 top-20 z-10
+    m-5 w-[350px] rounded-xl border-2 border-indigo-800 ${transitioningClasses}`}
     >
       <div className="-mb-10 flex flex-col items-center justify-end gap-5 p-4">
         <h2 className="text-2xl font-bold">{cart.length} Products</h2>

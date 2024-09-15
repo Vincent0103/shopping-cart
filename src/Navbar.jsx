@@ -49,7 +49,7 @@ const Navbar = ({ displayedPageName }) => {
           </li>
         </ul>
       </nav>
-      {popupCartState && <CartPopup />}
+      <CartPopup />
     </>
   );
 };

@@ -52,4 +52,18 @@
   .shadow-extraxl-still {
     box-shadow: 0 0 40px rgba(65, 55, 251, .25);
   }
+
+  .transition-slide {
+    transition-property: transform, opacity;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+
+  .translate-z-idle {
+    transform: perspective(1000px) translateZ(0);
+  }
+
+  .translate-z-back {
+    transform: perspective(1000px) translateZ(-200px);
+  }
 }
