@@ -35,7 +35,7 @@ const Checkout = () => {
     <section className="relative top-20 flex size-full flex-col items-center justify-center font-jost gap-20">
       <h1 className="mt-20 text-8xl font-extrabold">Your Cart</h1>
       <div
-        className="shadow-extraxl-still h-full w-11/12 rounded-[60px]
+        className="shadow-extraxl-purple h-full w-11/12 rounded-[60px]
       border-[28px] border-accent-400"
       >
         <div className="flex flex-col items-center justify-center p-14 text-3xl font-bold">

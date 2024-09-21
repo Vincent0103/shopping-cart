@@ -49,7 +49,11 @@
     background: radial-gradient(#4137fb, #0a0396);
   }
 
-  .shadow-extraxl-still {
+  .shadow-extraxl-black {
+    box-shadow: 0 0 40px black;
+  }
+
+  .shadow-extraxl-purple {
     box-shadow: 0 0 40px rgba(65, 55, 251, .25);
   }
 

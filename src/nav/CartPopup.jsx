@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { AppContext } from "../AppContext";
 import { calculateTotal, priceToNumber } from "../utils";
 import { Link } from "react-router-dom";
@@ -63,7 +63,7 @@ const CartPopup = () => {
   return (
     <section
       id="cart-popup"
-      className={`bg-gradient-radial shadow-extraxl-still transition-slide fixed right-0 top-20 z-10
+      className={`bg-gradient-radial shadow-extraxl-black transition-slide fixed right-0 top-20 z-10
     m-5 w-[350px] rounded-xl border-2 border-indigo-800 ${transitioningClasses}`}
     >
       <div className="-mb-10 flex flex-col items-center justify-end gap-5 p-4">

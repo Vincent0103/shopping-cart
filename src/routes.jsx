@@ -14,7 +14,7 @@ const routes = [
       { path: "/", element: <Navigate to="home" replace /> },
       { path: "home", element: <Home /> },
       { path: "shop?/:name", element: <Shop /> },
-      { path: "product/:name", element: <Product /> },
+      { path: "product/:id", element: <Product /> },
       { path: "checkout", element: <Checkout /> },
     ],
   },

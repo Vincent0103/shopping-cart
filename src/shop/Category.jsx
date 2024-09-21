@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import Card from "./Card";
-import Loader from "./Loader";
-import Error from "./Error";
+import Loader from "../fetchUtils/Loader";
+import Error from "../fetchUtils/Error";
 
 const Category = ({ categoryName = "" }) => {
   const [currentData, setCurrentData] = useState(null);
-  const [error, setError] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const categoriesMapper = {
@@ -34,10 +34,10 @@ const Category = ({ categoryName = "" }) => {
 
         const result = await response.json();
         setCurrentData(result);
-        setError(null);
+        setErrorMsg(null);
       } catch (error) {
         if (error.name === "AbortError") return;
-        setError(error);
+        setErrorMsg(error.message);
         setCurrentData(null);
       } finally {
         setIsLoading(false);
@@ -50,19 +50,26 @@ const Category = ({ categoryName = "" }) => {
     return () => controller.abort();
   }, [categoryName]);
 
+  const handleCart = (data) => {
+    setCart(
+      produce((draft) => {
+        const itemIndex = draft.findIndex(({ id: draftId }) => draftId === id);
+        if (itemIndex !== -1) draft[itemIndex].productAmount += productAmount;
+        else draft.unshift({ ...data });
+      }),
+    );
+  };
+
   if (isLoading) return <Loader />;
-  else if (error) return <Error error={error} />;
+  else if (errorMsg) return <Error errorMsg={errorMsg} />;
   else if (currentData) {
-    return currentData.map((data) => (
+    return currentData.map(({ id, image, title, price }) => (
       <Card
-        key={data.id}
-        id={data.id}
-        imgSrc={data.image}
-        alt={`Product: ${data.title}`}
-        title={data.title}
-        desc={data.description}
-        price={`${data.price}$`}
-        productCategory={categoryName}
+        key={id}
+        id={id}
+        imgSrc={image}
+        title={title}
+        price={`${price}$`}
       />
     ));
   }
