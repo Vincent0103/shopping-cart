@@ -6,13 +6,14 @@ import BgPurpleNoise from "../assets/purpleNoise.jpg";
 import { AppContext } from "../AppContext.jsx";
 import { toTitle } from "../utils.js";
 import Loader from "../fetchUtils/Loader.jsx";
+import Error from "../fetchUtils/Error.jsx";
 
 const Product = () => {
   const { setPopupCartState, setCart } = useContext(AppContext);
 
   const { id } = useParams();
-  const [errorMsg, setErrorMsg] = useState(null);
   const [productInfos, setProductInfos] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [productAmount, setProductAmount] = useState(1);
 
@@ -25,14 +26,18 @@ const Product = () => {
           `https://fakestoreapi.com/products/${id}`,
           { signal: controller.signal },
         );
-        if (!response.ok) throw Error(`HTTP error: status ${response.status}`);
+
+        if (!response.ok) {
+          throw new Error(`HTTP error: status ${response.status}`);
+        }
+
         const result = await response.json();
         setProductInfos(result);
         setErrorMsg(null);
       } catch (error) {
-        if (error === "AbortError") return;
-        setError(error.message);
+        if (error.name === "AbortError") return;
         setProductInfos(null);
+        setErrorMsg(error.message);
       } finally {
         setIsLoading(false);
       }
@@ -43,6 +48,7 @@ const Product = () => {
 
     return () => controller.abort();
   }, [id]);
+  console.log(productInfos);
 
   const handlePlusOrMinusClick = (action) => {
     if (action === "add") setProductAmount((prev) => prev + 1);
@@ -56,20 +62,22 @@ const Product = () => {
         const itemIndex = draft.findIndex(({ id: draftId }) => draftId === id);
         if (itemIndex !== -1) draft[itemIndex].productAmount += productAmount;
         else {
+          const { image, title, description, price, category } = productInfos;
           draft.unshift({
+            imgSrc: image,
+            desc: description,
+            productCategory: category,
             id,
-            imgSrc,
             title,
-            desc,
-            price,
+            price: Math.round(price * 100) / 100,
             productAmount,
-            productCategory,
           });
         }
       }),
     );
   };
 
+  console.log(productInfos);
   if (isLoading) return <Loader />;
   else if (errorMsg) return <Error errorMsg={errorMsg} />;
   else if (productInfos) {

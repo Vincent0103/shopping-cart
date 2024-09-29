@@ -12,7 +12,7 @@ const ProductItem = ({ imgSrc, title, price, quantity }) => {
         <img className="max-h-36" src={imgSrc} alt={`Product: ${title}`} />
         <h3 className="font-medium">{title}</h3>
       </div>
-      <P text={price} />
+      <P text={`${price}$`} />
       <P text={quantity} />
       <P text={`${priceToNumber(price) * quantity}$`} />
     </>

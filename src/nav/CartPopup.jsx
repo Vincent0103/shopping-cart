@@ -21,7 +21,7 @@ const ProductItem = ({ imgSrc, alt, title, price, productAmount }) => {
             {title}
           </h3>
           <p className=" overflow-hidden text-ellipsis text-nowrap text-[10px] text-primary-200">
-            {price}
+            {price}$
           </p>
         </div>
       </div>
