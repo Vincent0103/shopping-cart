@@ -17,16 +17,27 @@ const priceToNumber = (price) => {
   return price;
 }
 
+const verifyDataTypeOfProduct = (productArray) => {
+  if (productArray.length !== 2) {
+    throw Error(`param: ${productArray} contains invalid amount of expected data, expected: [float, float]`);
+  }
+
+  const containsNegatives = productArray.some((item) => item < 0);
+  if (typeof productArray[0] === "string") {
+    throw Error(`Make sure ${productArray[0]} is correctly formatted in a float/int type (e.g. 49.99)`);
+  } else if (containsNegatives) {
+    throw Error(`${productArray} cannot have negative numbers`);
+  }
+}
 const calculateTotal = (products) => {
   // products param data should be like this: [[price, amount], [price, amount], ...]
-  return products
-    .reduce((prev, curr) => {
-      if (curr.length !== 2) throw Error(`products contains a sub-array with invalid amount of data: [${curr}]`);
-      if (typeof curr[0] === "string") throw Error(`Make sure ${curr[0]} is correctly formatted in a float/int type (e.g. 49.99)`);
-      else if (curr[0] < 0) throw Error(`Cannot have negative prices: ${curr[0]}`);
-      return curr[0] * curr[1] + prev;
-    }, 0)
-    .toFixed(2) + "$";
+  products.forEach((product) => { verifyDataTypeOfProduct(product) });
+
+  return Math.round(
+    products
+      .reduce((prev, curr) => {
+        return curr[0] * curr[1] + prev;
+      }, 0) * 100) / 100;
 }
 
 export { toUrlSafe, toTitle, priceToNumber, calculateTotal };

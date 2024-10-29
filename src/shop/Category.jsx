@@ -50,16 +50,6 @@ const Category = ({ categoryName = "" }) => {
     return () => controller.abort();
   }, [categoryName]);
 
-  const handleCart = (data) => {
-    setCart(
-      produce((draft) => {
-        const itemIndex = draft.findIndex(({ id: draftId }) => draftId === id);
-        if (itemIndex !== -1) draft[itemIndex].productAmount += productAmount;
-        else draft.unshift({ ...data });
-      }),
-    );
-  };
-
   if (isLoading) return <Loader />;
   else if (errorMsg) return <Error errorMsg={errorMsg} />;
   else if (currentData) {

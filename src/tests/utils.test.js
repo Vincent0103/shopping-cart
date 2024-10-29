@@ -68,13 +68,13 @@ describe("calculateTotal", () => {
     let prices = [[44.99, 2], [356.75, 1], [89.99, 1]];
     let bigPrices = [[236723.63, 1], [9, 18], [0.9237, 43]];
 
-    expect(calculateTotal(prices)).toBe("536.72$");
-    expect(calculateTotal(bigPrices)).toBe("236925.35$");
+    expect(calculateTotal(prices)).toBe(536.72);
+    expect(calculateTotal(bigPrices)).toBe(236925.35);
   });
 
   it("throws an error if the prices contains negative values", () => {
     let badPrices = [[44.99, 2], [1736.001, 1], [-2.05, 7], [89.99, 343]];
-    expect(() => calculateTotal(badPrices)).toThrow("Cannot have negative prices: -2.05");
+    expect(() => calculateTotal(badPrices)).toThrowError();
   });
 
   it("throws an error if the prices contain a badly formatted price", () => {
@@ -84,6 +84,6 @@ describe("calculateTotal", () => {
 
   it("throws an error if one or more sub-arrays contain invalid length", () => {
     let badPrices = [[44.99, 2], [1736.001, 1], [2.05, 7, 8], [89.99, 343]];
-    expect(() => calculateTotal(badPrices)).toThrow("products contains a sub-array with invalid amount of data: [2.05,7,8]");
+    expect(() => calculateTotal(badPrices)).toThrowError();
   });
 })

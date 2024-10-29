@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { calculateTotal, priceToNumber } from "../utils";
 import { AppContext } from "../AppContext";
-import { useLocation } from "react-router-dom";
 
 const ProductItem = ({ imgSrc, title, price, quantity }) => {
   const P = ({ text }) => <p className="text-xl font-medium">{text}</p>;
@@ -14,25 +13,24 @@ const ProductItem = ({ imgSrc, title, price, quantity }) => {
       </div>
       <P text={`${price}$`} />
       <P text={quantity} />
-      <P text={`${priceToNumber(price) * quantity}$`} />
+      <P text={`${calculateTotal([[price, quantity]])}$`} />
     </>
   );
 };
 
 const GridContainer = ({ customStyling, children }) => (
-  <div className={`${customStyling} grid w-full grid-cols-[4fr_1fr_1fr_1fr] items-center justify-items-center`}>
+  <div
+    className={`${customStyling} grid w-full grid-cols-[4fr_1fr_1fr_1fr] items-center justify-items-center`}
+  >
     {children}
   </div>
 );
 
 const Checkout = () => {
-  const location = useLocation();
-
-  const { total } = location.state;
   const { cart } = useContext(AppContext);
 
   return (
-    <section className="relative top-20 flex size-full flex-col items-center justify-center font-jost gap-20">
+    <section className="relative top-20 flex size-full flex-col items-center justify-center gap-20 font-jost">
       <h1 className="mt-20 text-8xl font-extrabold">Your Cart</h1>
       <div
         className="shadow-extraxl-purple h-full w-11/12 rounded-[60px]
@@ -59,10 +57,17 @@ const Checkout = () => {
               <hr className="col-span-4 w-full border-secondary-400" />
             </>
           ))}
-          <p className="mt-20 text-5xl text-accent-200">Overall total: {total}</p>
+          <p className="mt-20 text-5xl text-accent-200">
+            Overall total: {calculateTotal(cart.map(({ price, productAmount }) => [price, productAmount]))}$
+          </p>
         </div>
       </div>
-      <button type="button" className="text-4xl font-bold bg-accent-500 px-6 py-2 rounded-md mb-20">Confirm and Pay</button>
+      <button
+        type="button"
+        className="mb-20 rounded-md bg-accent-500 px-6 py-2 text-4xl font-bold"
+      >
+        Confirm and Pay
+      </button>
     </section>
   );
 };

@@ -79,7 +79,7 @@ const CartPopup = () => {
         rounded-xl bg-gradient-to-t from-secondary-200/50 to-transparent"
       >
         <div className="border-y-2 border-secondary-700 p-3 font-medium">
-          <p>Total: {total}</p>
+          <p>Total: {total}$</p>
         </div>
         <Link
           to={"/checkout"}

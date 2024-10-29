@@ -10,4 +10,4 @@ Currently, two official plugins are available:
 ## TODO
 
 - Transition product title on scroll
-- seperate string to number convertion and calculateTotal.
+- Make the category sidebar fixed on scroll
