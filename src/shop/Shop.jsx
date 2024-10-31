@@ -28,8 +28,8 @@ const Shop = () => {
 
   return (
     <div className="size-full">
-      <div className="relative top-20 grid size-full grid-cols-[1fr_3fr]">
-        <nav aria-label="Category" className="w-full p-3">
+      <div className="relative top-20 size-full">
+        <nav aria-label="Category" className="fixed top-20 w-[430px] p-3">
           <div className="min-h-calc-100vh-96px w-full rounded-xl bg-accent-900 shadow-xl">
             <div className="flex justify-end rounded-xl bg-accent-500 py-6 pr-10 shadow-xl">
               <h3 className="text-4xl font-black">Category</h3>
@@ -59,7 +59,7 @@ const Shop = () => {
             </ul>
           </div>
         </nav>
-        <section className="flex size-min w-full flex-wrap gap-8 p-3">
+        <section className="relative flex flex-wrap w-full-minus-left-430px gap-8 p-3 left-[430px]">
           <Category categoryName={name} />
         </section>
       </div>

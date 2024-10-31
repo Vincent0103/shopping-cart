@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { calculateTotal, priceToNumber } from "../utils";
+import { calculateTotal } from "../utils";
 import { AppContext } from "../AppContext";
 
 const ProductItem = ({ imgSrc, title, price, quantity }) => {
@@ -13,7 +13,7 @@ const ProductItem = ({ imgSrc, title, price, quantity }) => {
       </div>
       <P text={`${price}$`} />
       <P text={quantity} />
-      <P text={`${calculateTotal([[price, quantity]])}$`} />
+      <P text={`${price * quantity}$`} />
     </>
   );
 };
@@ -58,7 +58,11 @@ const Checkout = () => {
             </>
           ))}
           <p className="mt-20 text-5xl text-accent-200">
-            Overall total: {calculateTotal(cart.map(({ price, productAmount }) => [price, productAmount]))}$
+            Overall total:{" "}
+            {calculateTotal(
+              cart.map(({ price, productAmount }) => [price, productAmount]),
+            )}
+            $
           </p>
         </div>
       </div>

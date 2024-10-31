@@ -9,6 +9,9 @@ export default {
       minHeight: {
         'calc-100vh-96px': 'calc(100vh - 105px)',
       },
+      width: {
+        'full-minus-left-430px': 'calc(100% - 430px)',
+      },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'],
         jost: ['Jost', 'Inter', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'],
