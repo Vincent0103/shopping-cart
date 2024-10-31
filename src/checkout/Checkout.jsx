@@ -1,6 +1,7 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { calculateTotal } from "../utils";
 import { AppContext } from "../AppContext";
+import PropTypes from "prop-types";
 
 const ProductItem = ({ imgSrc, title, price, quantity }) => {
   const P = ({ text }) => <p className="text-xl font-medium">{text}</p>;
@@ -28,6 +29,7 @@ const GridContainer = ({ customStyling, children }) => (
 
 const Checkout = () => {
   const { cart } = useContext(AppContext);
+  console.log(cart);
 
   return (
     <section className="relative top-20 flex size-full flex-col items-center justify-center gap-20 font-jost">
@@ -44,8 +46,8 @@ const Checkout = () => {
             <h2>Total</h2>
           </GridContainer>
           <hr className="col-span-4 w-full border-2 border-secondary-200" />
-          {cart.map(({ imgSrc, title, price, productAmount }, i) => (
-            <>
+          {cart.map(({ id, imgSrc, title, price, productAmount }) => (
+            <React.Fragment key={id}>
               <GridContainer customStyling={"my-6"}>
                 <ProductItem
                   imgSrc={imgSrc}
@@ -55,7 +57,7 @@ const Checkout = () => {
                 />
               </GridContainer>
               <hr className="col-span-4 w-full border-secondary-400" />
-            </>
+            </React.Fragment>
           ))}
           <p className="mt-20 text-5xl text-accent-200">
             Overall total:{" "}
@@ -75,5 +77,17 @@ const Checkout = () => {
     </section>
   );
 };
+
+ProductItem.propTypes = {
+  imgSrc: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  quantity: PropTypes.number.isRequired,
+};
+
+GridContainer.propTypes = {
+  customStyling: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+}
 
 export default Checkout;

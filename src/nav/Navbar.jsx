@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import CartPopup from "./CartPopup";
 import { useContext } from "react";
 import { AppContext } from "../AppContext";
+import PropTypes from "prop-types";
 
 const Navbar = ({ displayedPageName }) => {
   const { setPopupCartState } = useContext(AppContext);
@@ -52,6 +53,10 @@ const Navbar = ({ displayedPageName }) => {
       <CartPopup />
     </>
   );
+};
+
+Navbar.propTypes = {
+  displayedPageName: PropTypes.string.isRequired,
 };
 
 export default Navbar;

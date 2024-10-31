@@ -48,7 +48,6 @@ const Product = () => {
 
     return () => controller.abort();
   }, [id]);
-  console.log(productInfos);
 
   const handlePlusOrMinusClick = (action) => {
     if (action === "add") setProductAmount((prev) => prev + 1);
@@ -77,7 +76,6 @@ const Product = () => {
     );
   };
 
-  console.log(productInfos);
   if (isLoading) return <Loader />;
   else if (errorMsg) return <Error errorMsg={errorMsg} />;
   else if (productInfos) {

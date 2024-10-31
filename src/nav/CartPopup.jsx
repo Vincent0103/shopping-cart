@@ -2,8 +2,9 @@ import { useContext, useEffect } from "react";
 import { AppContext } from "../AppContext";
 import { calculateTotal, priceToNumber } from "../utils";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-const ProductItem = ({ imgSrc, alt, title, price, productAmount }) => {
+const ProductItem = ({ imgSrc, title, price, productAmount }) => {
   return (
     <div
       className="flex h-12 w-full items-center justify-center rounded-md
@@ -14,7 +15,11 @@ const ProductItem = ({ imgSrc, alt, title, price, productAmount }) => {
       border-secondary-950/20 p-3"
       >
         <div className="flex size-9 items-center justify-center">
-          <img className="size-full object-contain" src={imgSrc} alt={alt} />
+          <img
+            className="size-full object-contain"
+            src={imgSrc}
+            alt={`Product: ${title}`}
+          />
         </div>
         <div className="flex w-full flex-col justify-center overflow-hidden">
           <h3 className="overflow-hidden text-ellipsis text-nowrap text-sm">
@@ -46,7 +51,11 @@ const CartPopup = () => {
         "#cart-popup, #add-to-cart-btn, #main-navbar",
       );
 
-      if ((popupCartState && !hasParentWithId) || e.target.closest("#checkout-link")) setPopupCartState(false);
+      if (
+        (popupCartState && !hasParentWithId) ||
+        e.target.closest("#checkout-link")
+      )
+        setPopupCartState(false);
     };
 
     window.addEventListener("click", handleNotCartPopupClick);
@@ -92,6 +101,13 @@ const CartPopup = () => {
       </div>
     </section>
   );
+};
+
+ProductItem.propTypes = {
+  imgSrc: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  productAmount: PropTypes.number.isRequired,
 };
 
 export default CartPopup;

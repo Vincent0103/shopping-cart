@@ -38,12 +38,10 @@ const Card = ({ id, imgSrc, title, price }) => (
 );
 
 Card.propTypes = {
-  props: PropTypes.exact({
-    id: PropTypes.number.isRequired,
-    imgSrc: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired,
-  }),
+  id: PropTypes.number.isRequired,
+  imgSrc: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
 };
 
 export default Card;
