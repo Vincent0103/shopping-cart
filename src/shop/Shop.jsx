@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 const Li = ({ text, linkTo, isSelected = false }) => (
   <Link className="flex size-full items-center justify-center" to={linkTo}>
     <li
-      className={`flex size-full items-center justify-end rounded-md px-8 py-3 transition-colors duration-100
+      className={`flex size-full items-center justify-end rounded-md px-6 py-3 transition-colors duration-100
           ${isSelected ? "bg-gradient-to-r from-accent-200 to-accent-400 text-text-950 shadow-lg" : "hover:bg-accent-200/50 hover:text-text-950"}`}
     >
       <h3>{text}</h3>
@@ -34,7 +34,7 @@ const Shop = () => {
             <div className="flex justify-end rounded-xl bg-accent-500 py-6 pr-10 shadow-xl">
               <h3 className="text-4xl font-black">Category</h3>
             </div>
-            <ul className="flex flex-col items-center justify-center gap-4 p-2 py-6 text-4xl font-semibold">
+            <ul className="flex flex-col items-center justify-center gap-2 p-1 py-3 text-3xl font-semibold">
               <Li text={"All"} linkTo={"/shop"} isSelected={name === ""} />
               <Li
                 text={"Electronics"}
