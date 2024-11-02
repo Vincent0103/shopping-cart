@@ -6,7 +6,7 @@ import BgPurpleNoise from "../assets/purpleNoise.jpg";
 import { AppContext } from "../AppContext.jsx";
 import { toTitle } from "../utils.js";
 import Loader from "../fetchUtils/Loader.jsx";
-import Error from "../fetchUtils/Error.jsx";
+import ErrorShower from "../fetchUtils/ErrorShower.jsx";
 
 const Product = () => {
   const { setPopupCartState, setCart } = useContext(AppContext);
@@ -77,7 +77,7 @@ const Product = () => {
   };
 
   if (isLoading) return <Loader />;
-  else if (errorMsg) return <Error errorMsg={errorMsg} />;
+  else if (errorMsg) return <ErrorShower errorMsg={errorMsg} />;
   else if (productInfos) {
     return (
       <div

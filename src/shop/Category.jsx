@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import Card from "./Card";
 import Loader from "../fetchUtils/Loader";
-import Error from "../fetchUtils/Error";
+import ErrorShower from "../fetchUtils/ErrorShower";
 
 const Category = ({ categoryName = "" }) => {
   const [currentData, setCurrentData] = useState(null);
@@ -51,16 +51,10 @@ const Category = ({ categoryName = "" }) => {
   }, [categoryName]);
 
   if (isLoading) return <Loader />;
-  else if (errorMsg) return <Error errorMsg={errorMsg} />;
+  else if (errorMsg) return <ErrorShower errorMsg={errorMsg} />;
   else if (currentData) {
     return currentData.map(({ id, image, title, price }) => (
-      <Card
-        key={id}
-        id={id}
-        imgSrc={image}
-        title={title}
-        price={`${price}$`}
-      />
+      <Card key={id} id={id} imgSrc={image} title={title} price={`${price}$`} />
     ));
   }
 
