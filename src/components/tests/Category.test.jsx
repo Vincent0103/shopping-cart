@@ -20,7 +20,7 @@ describe("Shop Category", () => {
       const mockResponse = {
         json: vi.fn().mockResolvedValue([
           { id: 1, title: "Product 1" },
-          { id: 2, title: "Product 2" } ,
+          { id: 2, title: "Product 2" },
         ]),
         ok: true,
       };
@@ -36,7 +36,6 @@ describe("Shop Category", () => {
 
       expect(product1).toBeInTheDocument();
       expect(product2).toBeInTheDocument();
-
     });
 
     it("handles fetch error properly", async () => {

@@ -1,11 +1,11 @@
 import Product from "./Product";
-import HeadphonesPNG from "../../assets/headphones.png";
-import HeadphonesWEBP from "../../assets/headphones.webp";
-import RingsPNG from "../../assets/rings.png";
-import RingsWEBP from "../../assets/rings.webp";
-import CarharttPNG from "../../assets/carhartt.png";
-import CarharttWEBP from "../../assets/carhartt.webp";
-import abstractWallpaper from "../../assets/abstractWallpaper.jpg";
+import HeadphonesPNG from "../../../assets/headphones.png";
+import HeadphonesWEBP from "../../../assets/headphones.webp";
+import RingsPNG from "../../../assets/rings.png";
+import RingsWEBP from "../../../assets/rings.webp";
+import CarharttPNG from "../../../assets/carhartt.png";
+import CarharttWEBP from "../../../assets/carhartt.webp";
+import abstractWallpaper from "../../../assets/abstractWallpaper.jpg";
 import { Link } from "react-router-dom";
 
 const CategoriesShowcase = () => (
@@ -36,7 +36,7 @@ const CategoriesShowcase = () => (
           alt={"Electronics"}
           url={"/shop/electronics"}
           additionalImgStyles={"absolute -top-full left-[38%] size-[40%]"}
-          />
+        />
         <Product
           imgSrcs={[RingsWEBP, RingsPNG]}
           text={"JEWELRY"}
@@ -46,7 +46,7 @@ const CategoriesShowcase = () => (
           additionalImgStyles={
             "relative size-[25%] -left-16 max-xl:size-52 max-xl:-left-10 max-md:size-36 max-md:-left-6 max-sm:size-28 max-sm:-left-2 flex justify-center items-center"
           }
-          />
+        />
         <Product
           imgSrcs={[CarharttWEBP, CarharttPNG]}
           text={"CLOTHES"}

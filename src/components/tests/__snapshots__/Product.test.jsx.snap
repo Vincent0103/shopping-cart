@@ -1,26 +1,5 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Shop Product > fetch > fetches the correct product when given a valid url 1`] = `
-<div>
-  <p>
-    Rendered id: 
-    1
-  </p>
-  <p>
-    gucci airpods
-  </p>
-  <p>
-    electronics
-  </p>
-  <p>
-    85
-  </p>
-  <p>
-    airpods for luxury peoples
-  </p>
-</div>
-`;
-
 exports[`Shop Product > fetch > fetches the correct product when given a valid url with a valid id 1`] = `
 <div>
   <p>

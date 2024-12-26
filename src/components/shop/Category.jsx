@@ -26,7 +26,7 @@ const Category = ({ categoryName = "" }) => {
           : `https://fakestoreapi.com/products/category/${categoriesMapper[categoryName]}`;
 
       try {
-        const response = await fetch(url, { signal: controller.signal });
+        const response = await fetch(url, controller.signal);
 
         if (!response.ok) {
           throw new Error(`HTTP error: status ${response.status}`);

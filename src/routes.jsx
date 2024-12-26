@@ -1,9 +1,9 @@
 import { Navigate } from "react-router-dom";
 import App from "./App";
-import Home from "./home/Home";
-import Shop from "./shop/Shop";
-import Product from "./product/Product";
-import Checkout from "./checkout/Checkout";
+import Home from "./components/home/Home";
+import Shop from "./components/shop/Shop";
+import Product from "./components/product/Product";
+import Checkout from "./components/checkout/Checkout";
 
 const routes = [
   {

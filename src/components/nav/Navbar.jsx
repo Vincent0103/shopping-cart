@@ -1,9 +1,9 @@
 import { ShoppingCart } from "lucide-react";
-import BrandLogo from "../assets/logo.png";
+import BrandLogo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import CartPopup from "./CartPopup";
 import { useContext } from "react";
-import { AppContext } from "../AppContext";
+import { AppContext } from "../../AppContext";
 import PropTypes from "prop-types";
 
 const Navbar = ({ displayedPageName }) => {

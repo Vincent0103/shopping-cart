@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
-import { AppContext } from "../AppContext";
-import { calculateTotal, priceToNumber } from "../utils";
+import { AppContext } from "../../AppContext";
+import { calculateTotal, priceToNumber } from "../../utils";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 

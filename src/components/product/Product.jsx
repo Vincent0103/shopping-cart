@@ -2,9 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { produce } from "immer";
 import { Minus, Plus, ShoppingCart } from "lucide-react";
-import BgPurpleNoise from "../assets/purpleNoise.jpg";
-import { AppContext } from "../AppContext.jsx";
-import { toTitle } from "../utils.js";
+import BgPurpleNoise from "../../assets/purpleNoise.jpg";
+import { AppContext } from "../../AppContext.jsx";
+import { toTitle } from "../../utils.js";
 import Loader from "../fetchUtils/Loader.jsx";
 import ErrorShower from "../fetchUtils/ErrorShower.jsx";
 
@@ -24,7 +24,7 @@ const Product = () => {
       try {
         const response = await fetch(
           `https://fakestoreapi.com/products/${id}`,
-          { signal: controller.signal },
+          controller.signal,
         );
 
         if (!response.ok) {

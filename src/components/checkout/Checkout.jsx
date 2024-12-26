@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { calculateTotal } from "../utils";
-import { AppContext } from "../AppContext";
+import { calculateTotal } from "../../utils";
+import { AppContext } from "../../AppContext";
 import PropTypes from "prop-types";
 
 const ProductItem = ({ imgSrc, title, price, quantity }) => {
@@ -88,6 +88,6 @@ ProductItem.propTypes = {
 GridContainer.propTypes = {
   customStyling: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
-}
+};
 
 export default Checkout;

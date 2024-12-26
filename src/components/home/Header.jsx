@@ -1,6 +1,6 @@
-import BgWallpaperJPG from "../assets/bgHomepage.jpg";
-import BgWallpaperWEBP from "../assets/bgHomepage.webp";
-import AbstractWallpaper from "../assets/abstractWallpaper.jpg";
+import BgWallpaperJPG from "../../assets/bgHomepage.jpg";
+import BgWallpaperWEBP from "../../assets/bgHomepage.webp";
+import AbstractWallpaper from "../../assets/abstractWallpaper.jpg";
 import { Link } from "react-router-dom";
 
 const Header = () => (
