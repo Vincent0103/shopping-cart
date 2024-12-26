@@ -29,7 +29,6 @@ const GridContainer = ({ customStyling, children }) => (
 
 const Checkout = () => {
   const { cart } = useContext(AppContext);
-  console.log(cart);
 
   return (
     <section className="relative top-20 flex size-full flex-col items-center justify-center gap-20 font-jost">
