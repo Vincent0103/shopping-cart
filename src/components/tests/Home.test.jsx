@@ -98,7 +98,7 @@ describe("Home", () => {
     expect(screen.getByRole("heading", { name: "" })).toBeInTheDocument();
   });
 
-  describe("directs to the shop panel on one of the categories clicking a category btn", () => {
+  describe("directs to the shop panel on one of the categories when clicking a category btn", () => {
     it("works for electronics", async () => {
       const user = userEvent.setup();
 
