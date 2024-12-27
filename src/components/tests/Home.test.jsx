@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Home from "../home/Home";
-import { beforeAll, it, vi } from "vitest";
+import { it, vi } from "vitest";
 import {
   createMemoryRouter,
   Link,
