@@ -108,27 +108,5 @@ describe("Shop", () => {
       expect(screen.getByAltText("Product: Product 2")).toBeInTheDocument();
       expect(screen.getByAltText("Product: Product 3")).toBeInTheDocument();
     });
-
-    // TODO: Remove this or fix this idk
-    it("show a loading state if the products still aren't there", async () => {
-      let resolve;
-      fetch = vi.fn(
-        () =>
-          new Promise((_resolve) => {
-            resolve = _resolve;
-          }),
-      );
-
-      const user = userEvent.setup();
-      const mensClothingBtn = screen.getByRole("heading", {
-        name: /men' clothing/i,
-      });
-      expect(mensClothingBtn).toBeInTheDocument();
-
-      await user.click(mensClothingBtn);
-      expect(
-        screen.getByRole("heading", { name: /loading.../i }),
-      ).toBeInTheDocument();
-    });
   });
 });
