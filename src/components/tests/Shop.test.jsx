@@ -78,19 +78,19 @@ describe("Shop", () => {
           {
             id: 1,
             title: "Product 1",
-            imgSrc: "https://example.com/product1.jpg",
+            image: "https://example.com/product1.jpg",
             price: 29.99,
           },
           {
             id: 2,
             title: "Product 2",
-            imgSrc: "https://example.com/product2.jpg",
+            image: "https://example.com/product2.jpg",
             price: 49.99,
           },
           {
             id: 3,
             title: "Product 3",
-            imgSrc: "https://example.com/product3.jpg",
+            image: "https://example.com/product3.jpg",
             price: 19.99,
           },
         ]),
