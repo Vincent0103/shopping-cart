@@ -57,8 +57,8 @@ vi.mock("../shop/Shop.jsx", () => ({
     if (!validCategories.includes(name)) name = "";
 
     return (
-      <nav aria-label="Category" className="fixed top-20 w-[430px] p-3">
-        <ul className="flex flex-col items-center justify-center gap-2 p-1 py-3 text-3xl font-semibold">
+      <nav>
+        <ul>
           <Link to={"/shop"}>
             <li>
               <h3>{name}</h3>
