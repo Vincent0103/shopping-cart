@@ -4,7 +4,6 @@ import { render, screen, act } from "@testing-library/react";
 import { afterEach, beforeEach, describe, it, expect, vi } from "vitest";
 import Product from "../product/Product";
 import Shop from "../shop/Shop";
-import Category from "../shop/Category";
 import useData from "../fetchUtils/Fetch";
 import {
   useParams,
