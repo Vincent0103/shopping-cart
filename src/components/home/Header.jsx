@@ -11,8 +11,8 @@ const Header = () => (
         <img className="size-full object-cover" src={BgWallpaperJPG} alt="" />
       </picture>
     </div>
-    <div className="mx-20 flex w-full items-center text-nowrap">
-      <h1 className="flex flex-col text-[6vw] font-black leading-[1.1] tracking-wide">
+    <div className="mx-20 flex w-full items-center text-nowrap max-sm:mx-14">
+      <h1 className="flex flex-col text-[6vw] font-black leading-[1.1] tracking-wide max-sm:text-3xl">
         <span>
           <span className="stroke-sm font-jost text-[#080c12]">Seamless</span>{" "}
           Things,
@@ -32,7 +32,7 @@ const Header = () => (
             className="z-0 flex h-16 w-56 -skew-x-[25deg] skew-y-[5deg]
               items-center justify-center rounded-md border-2 border-accent-600 bg-accent-400 text-4xl font-bold
               transition-transform group-hover:translate-x-1.5 group-hover:translate-y-1.5 max-lg:h-10 max-lg:w-36 max-lg:text-2xl
-              max-sm:h-6 max-sm:w-24 max-sm:text-base
+              max-sm:h-8 max-sm:w-24 max-sm:text-base max-sm:font-semibold
               max-sm:group-hover:translate-x-1 max-sm:group-hover:translate-y-1"
           >
             Shop Now

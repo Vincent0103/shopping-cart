@@ -20,10 +20,10 @@ const CategoriesShowcase = () => (
     <div
       className="flex h-28
       w-full items-center justify-center bg-primary-200/50 px-20 text-text-900 shadow-lg backdrop-blur-sm
-      max-2xl:h-20 max-lg:h-12"
+      max-2xl:h-20 max-lg:h-12 max-lg:pl-10"
     >
       <div className="flex w-full max-w-screen-2xl items-center">
-        <h2 className="text-5xl font-extrabold max-2xl:text-3xl max-lg:text-xl">
+        <h2 className="text-5xl font-bold max-2xl:text-3xl max-lg:text-xl">
           We sell bunch of...
         </h2>
       </div>
@@ -36,6 +36,7 @@ const CategoriesShowcase = () => (
           alt={"Electronics"}
           url={"/shop/electronics"}
           additionalImgStyles={"absolute -top-full left-[38%] size-[40%]"}
+          additionalContainerStyles={"max-md:mt-14 mt-28"}
         />
         <Product
           imgSrcs={[RingsWEBP, RingsPNG]}
@@ -44,7 +45,7 @@ const CategoriesShowcase = () => (
           url={"/shop/jewelry"}
           imgDirection={"left"}
           additionalImgStyles={
-            "relative size-[25%] -left-16 max-xl:size-52 max-xl:-left-10 max-md:size-36 max-md:-left-6 max-sm:size-28 max-sm:-left-2 flex justify-center items-center"
+            "relative size-[25%] -left-16 max-xl:size-52 max-xl:-left-10 max-md:size-36 max-md:-left-6 max-sm:size-20 max-sm:-left-2 flex justify-center items-center"
           }
         />
         <Product
@@ -54,7 +55,7 @@ const CategoriesShowcase = () => (
           url={"/shop/mens-clothing"}
           imgDirection={"right"}
           additionalImgStyles={
-            "relative size-[25%] -right-10 max-xl:size-52 max-md:size-36 max-md:-right-2 max-sm:size-28 flex justify-center items-center"
+            "relative size-[25%] -right-10 max-xl:size-52 max-md:size-36 max-md:-right-2 max-sm:size-24 flex justify-center items-center"
           }
           additionalContainerStyles={"mt-0"}
         />
@@ -70,9 +71,9 @@ const CategoriesShowcase = () => (
         <Link to="/shop">
           <button
             type="button"
-            className="group rounded-xl border-2 border-accent-600 bg-accent-400 px-6 py-2 shadow-md"
+            className="group rounded-xl border-2 border-accent-600 bg-accent-400 px-6 py-2 shadow-md max-lg:px-4 max-lg:py-1"
           >
-            <h2 className="text-3xl font-semibold text-white transition-transform group-hover:scale-[102%] max-2xl:text-xl max-lg:text-lg">
+            <h2 className="text-3xl font-semibold text-white transition-transform group-hover:scale-[102%] max-xl:text-xl max-lg:text-lg">
               Shop Now
             </h2>
           </button>
