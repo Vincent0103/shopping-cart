@@ -1,55 +1,36 @@
-import { useState, useEffect } from "react";
 import Loader from "../fetchUtils/Loader";
 import ErrorShower from "../fetchUtils/ErrorShower";
 import { render, screen, act } from "@testing-library/react";
 import { afterEach, beforeEach, describe, it, expect, vi } from "vitest";
 import Product from "../product/Product";
-import { useParams } from "react-router-dom";
+import Shop from "../shop/Shop";
+import Category from "../shop/Category";
+import useData from "../fetchUtils/Fetch";
+import {
+  useParams,
+  Link,
+  createMemoryRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
+import userEvent from "@testing-library/user-event";
 
 vi.mock("../product/Product.jsx", () => ({
-  default: () => {
-    const { id } = useParams();
-    const [productInfos, setProductInfos] = useState(null);
-    const [errorMsg, setErrorMsg] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-      const controller = new AbortController();
-
-      const fetchData = async () => {
-        try {
-          const response = await fetch(
-            `https://fakestoreapi.com/products/${id}`,
-            { signal: controller.signal },
-          );
-
-          if (!response.ok) {
-            throw new Error(`HTTP error: status ${response.status}`);
-          }
-
-          const result = await response.json();
-          setProductInfos(result);
-          setErrorMsg(null);
-        } catch (error) {
-          if (error.name === "AbortError") return;
-          setProductInfos(null);
-          setErrorMsg(error.message);
-        } finally {
-          setIsLoading(false);
-        }
-      };
-
-      setIsLoading(true);
-      fetchData();
-
-      return () => controller.abort();
-    }, [id]);
+  default: ({ mockedId, categoryName = "" }) => {
+    const {
+      data: productInfos,
+      errorMessage,
+      isLoading,
+    } = useData(`https://fakestoreapi.com/products/${mockedId}`, [mockedId]);
 
     if (isLoading) return <Loader />;
-    else if (errorMsg) return <ErrorShower errorMsg={errorMsg} />;
+    else if (errorMessage) return <ErrorShower errorMsg={errorMessage} />;
     else if (productInfos) {
       return (
         <>
+          <Link to={`/shop/${categoryName}`}>
+            <li>{categoryName}</li>
+          </Link>
           <p>Rendered id: {productInfos.id}</p>
           <p>{productInfos.title}</p>
           <p>{productInfos.category}</p>
@@ -58,6 +39,31 @@ vi.mock("../product/Product.jsx", () => ({
         </>
       );
     }
+  },
+}));
+
+vi.mock("../shop/Shop.jsx", () => ({
+  default: () => {
+    let { name } = useParams();
+
+    const validCategories = ["electronics", "mens-clothing"];
+
+    name = name.split("/")[0];
+    if (!validCategories.includes(name)) name = "";
+
+    return (
+      <>
+        <nav>
+          <ul>
+            <Link>
+              <li>
+                <h3>{name}</h3>
+              </li>
+            </Link>
+          </ul>
+        </nav>
+      </>
+    );
   },
 }));
 
@@ -84,9 +90,20 @@ describe("Shop Product", () => {
         ok: true,
       });
 
-      let container;
+      const routes = [
+        {
+          path: "/",
+          element: <Navigate to={"/products/:id"} replace />,
+        },
+        {
+          path: "/products/:id",
+          element: <Product mockedId={1} />,
+        },
+      ];
+      const router = createMemoryRouter(routes);
+
       await act(async () => {
-        container = render(<Product />).container;
+        render(<RouterProvider router={router} />);
       });
       expect(fetch).toHaveBeenCalled();
 
@@ -96,7 +113,7 @@ describe("Shop Product", () => {
       expect(productTitle).toBeInTheDocument();
       expect(productId).toBeInTheDocument();
 
-      expect(container).toMatchSnapshot();
+      expect(screen).toMatchSnapshot();
     });
 
     it("shows an error message if the given id doesn't exist as a product", async () => {
@@ -107,6 +124,52 @@ describe("Shop Product", () => {
       });
 
       expect(screen.getByText(/error: fetch failed/i)).toBeInTheDocument();
+    });
+  });
+
+  describe("history nav", () => {
+    it("should link back to the original category when clicking the category link", async () => {
+      fetch = vi.fn().mockResolvedValue({
+        json: vi.fn().mockResolvedValue({
+          id: 1,
+          title: "gucci airpods",
+          price: 85,
+          category: "electronics",
+          description: "airpods for luxury peoples",
+          image: "...",
+        }),
+        ok: true,
+      });
+
+      const routes = [
+        {
+          path: "/",
+          element: <Navigate to={"product/:id"} replace />,
+        },
+        {
+          path: "/product/:id",
+          element: <Product categoryName={"electronics"} />,
+        },
+        {
+          path: "/shop?/:name",
+          element: <Shop />,
+        },
+      ];
+
+      const router = createMemoryRouter(routes);
+      await act(async () => {
+        render(<RouterProvider router={router} />);
+      });
+
+      const user = userEvent.setup();
+
+      const categoryLink = screen.getByRole("link", { name: "electronics" });
+      await user.click(categoryLink);
+
+      // the mocked shop only displays a link with the given parameter from the history link name
+      expect(
+        screen.getByRole("heading", { name: "electronics" }),
+      ).toBeInTheDocument();
     });
   });
 });
