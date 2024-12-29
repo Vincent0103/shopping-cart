@@ -55,7 +55,10 @@ const Product = () => {
         style={{ backgroundImage: `url(${BgPurpleNoise})` }}
         className="relative top-20 flex w-full justify-center font-extrabold text-text-50"
       >
-        <section className="m-10 flex w-full max-w-screen-2xl flex-col items-center justify-center gap-10">
+        <section
+          className="m-10 flex w-full max-w-screen-2xl flex-col items-center
+              justify-center gap-10 max-lg:m-4 max-lg:gap-6"
+        >
           <nav className="self-start" aria-label="Previous links">
             <ul className="flex text-lg font-light text-zinc-500">
               <Link to={`/shop/${productInfos.category}`}>
@@ -69,15 +72,15 @@ const Product = () => {
               </li>
             </ul>
           </nav>
-          <div className="flex size-full justify-center gap-14">
-            <div className="max-w-1/2">
+          <div className="flex size-full justify-center gap-14 max-lg:flex-col">
+            <div className="max-w-1/2 max-lg:max-w-full">
               <img
-                className="max-h-[600px] w-full rounded-sm object-contain object-right-top"
+                className="max-h-[600px] w-full rounded-sm object-contain object-right-top max-lg:object-center"
                 src={productInfos.image}
                 alt={`Product: ${productInfos.title}`}
               />
             </div>
-            <div className="flex h-full w-1/2 flex-col gap-6">
+            <div className="flex h-full w-1/2 flex-col gap-6 max-lg:w-full max-lg:gap-5">
               <div className="flex w-full flex-col items-start gap-3">
                 <h1 className="max-h-36 w-full overflow-hidden text-ellipsis font-jost text-5xl">
                   {productInfos.title}
