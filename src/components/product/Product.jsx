@@ -53,9 +53,9 @@ const Product = () => {
     return (
       <div
         style={{ backgroundImage: `url(${BgPurpleNoise})` }}
-        className="flex h-screen min-h-screen w-full items-center justify-center font-extrabold text-text-50"
+        className="relative top-20 flex w-full justify-center font-extrabold text-text-50"
       >
-        <section className="flex h-3/5 w-full max-w-screen-2xl flex-col items-center justify-center gap-10">
+        <section className="m-10 flex w-full max-w-screen-2xl flex-col items-center justify-center gap-10">
           <nav className="self-start" aria-label="Previous links">
             <ul className="flex text-lg font-light text-zinc-500">
               <Link to={`/shop/${productInfos.category}`}>
@@ -69,17 +69,17 @@ const Product = () => {
               </li>
             </ul>
           </nav>
-          <div className="flex size-full gap-20">
-            <div className="flex h-full w-1/2 justify-end">
+          <div className="flex size-full justify-center gap-14">
+            <div className="max-w-1/2">
               <img
-                className="h-full rounded-sm object-cover"
+                className="max-h-[600px] w-full rounded-sm object-contain object-right-top"
                 src={productInfos.image}
                 alt={`Product: ${productInfos.title}`}
               />
             </div>
-            <div className="flex w-1/2 flex-col gap-6">
-              <div className="flex flex-col items-start gap-3">
-                <h1 className="h-[66px] w-full overflow-hidden text-ellipsis text-nowrap font-jost text-6xl">
+            <div className="flex h-full w-1/2 flex-col gap-6">
+              <div className="flex w-full flex-col items-start gap-3">
+                <h1 className="max-h-36 w-full overflow-hidden text-ellipsis font-jost text-5xl">
                   {productInfos.title}
                 </h1>
                 <h2 className="text-2xl font-semibold">
@@ -88,7 +88,7 @@ const Product = () => {
               </div>
               <hr className="bg-white" />
               <div>
-                <p className="text-2xl font-normal leading-normal">
+                <p className="font-sans text-lg font-normal leading-normal">
                   {productInfos.description}
                 </p>
               </div>
@@ -119,14 +119,14 @@ const Product = () => {
               <button
                 id="add-to-cart-btn"
                 onClick={handleAddToCartClick}
-                className="shadow-accent-btn flex h-14 items-center
+                className="shadow-accent-btn flex h-10 items-center
                 gap-4 rounded-md bg-primary-500 px-4 text-2xl
                 font-medium shadow-primary-500 transition-shadow
                 duration-100"
                 type="submit"
               >
-                <ShoppingCart size={32} />
-                <p className="font-semibold">Add to Cart</p>
+                <ShoppingCart size={24} />
+                <p className="text-xl font-semibold">Add to Cart</p>
               </button>
             </div>
           </div>
