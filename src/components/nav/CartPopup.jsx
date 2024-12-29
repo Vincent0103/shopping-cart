@@ -72,22 +72,22 @@ const CartPopup = () => {
   return (
     <section
       id="cart-popup"
-      className={`bg-gradient-radial shadow-extraxl-black transition-slide fixed right-0 top-20 z-10
-    m-5 w-[350px] rounded-xl border-2 border-indigo-800 ${transitioningClasses}`}
+      className={`bg-gradient-radial shadow-extraxl-black transition-slide max-md:top-18 fixed right-0 top-20
+    z-10 m-5 w-[350px] rounded-xl border-2 border-indigo-800 max-md:w-64 max-sm:top-14 ${transitioningClasses}`}
     >
-      <div className="-mb-10 flex flex-col items-center justify-end gap-5 p-4">
+      <div className="-mb-10 flex flex-col items-center justify-end gap-5 p-4 max-md:mb-2 max-md:gap-2 max-md:p-3">
         <h2 className="text-2xl font-bold">{cart.length} Products</h2>
-        <div className="z-[1] flex h-44 w-full flex-col gap-3 overflow-y-auto">
+        <div className="z-[1] flex h-44 w-full flex-col gap-3 overflow-y-auto max-md:h-28 max-md:gap-1.5">
           {cart.map((product) => (
             <ProductItem key={product.id} {...product} />
           ))}
         </div>
       </div>
       <div
-        className="relative z-0 flex h-40 w-full flex-col justify-end
-        rounded-xl bg-gradient-to-t from-secondary-200/50 to-transparent"
+        className="relative z-0 flex h-40 w-full flex-col justify-end rounded-xl
+        bg-gradient-to-t from-secondary-200/50 to-transparent max-md:h-20"
       >
-        <div className="border-y-2 border-secondary-700 p-3 font-medium">
+        <div className="border-y-2 border-secondary-700 p-3 font-medium max-md:p-2">
           <p>Total: {total}$</p>
         </div>
         <Link
@@ -96,7 +96,9 @@ const CartPopup = () => {
           id="checkout-link"
           className="text-text-900 hover:underline"
         >
-          <h4 className="mx-3 mb-3 pt-3 text-lg font-extrabold">CHECKOUT</h4>
+          <h4 className="mx-3 mb-3 pt-3 text-lg font-extrabold max-md:mx-2 max-md:mb-2 max-md:pt-2">
+            CHECKOUT
+          </h4>
         </Link>
       </div>
     </section>

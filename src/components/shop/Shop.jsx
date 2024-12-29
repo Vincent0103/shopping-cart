@@ -26,7 +26,7 @@ const Li = ({ text, linkTo, deviceType, isSelected = false }) =>
 const Ul = ({ name, containerStyle, deviceType }) => (
   <ul
     className={`${containerStyle} ${
-      deviceType === "desktop" ? "max-md:hidden" : "overflow-x-auto sm:hidden"
+      deviceType === "desktop" ? "max-sm:hidden" : "overflow-x-auto sm:hidden"
     }`}
   >
     <Li
