@@ -93,8 +93,8 @@ const Checkout = () => {
         </div>
       </div>
       <div
-        className="shadow-extraxl-purple mx-3 flex h-full flex-col
-      items-center justify-center rounded-[40px] border-[10px] border-accent-400 lg:hidden"
+        className="shadow-extraxl-purple mx-3 flex h-full flex-col items-center
+      justify-center rounded-[40px] border-4 border-accent-400 p-4 lg:hidden"
       >
         <div>
           {cart.map(({ id, imgSrc, title, price, productAmount }) => (
@@ -110,7 +110,7 @@ const Checkout = () => {
             </div>
           ))}
         </div>
-        <p className="mb-4 text-2xl font-bold">
+        <p className="text-2xl font-bold">
           Overall total:{" "}
           <span className="text-amber-400">
             {calculateTotal(
@@ -122,7 +122,7 @@ const Checkout = () => {
       </div>
       <button
         type="button"
-        className="mb-10 rounded-md bg-accent-500 px-3 py-1 text-xl font-bold"
+        className="mb-10 rounded-md bg-accent-500 px-6 py-2 text-3xl font-bold max-lg:px-3 max-lg:py-1 max-lg:text-xl"
       >
         Confirm and Pay
       </button>
