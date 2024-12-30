@@ -135,6 +135,7 @@ ProductItem.propTypes = {
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   quantity: PropTypes.number.isRequired,
+  deviceType: PropTypes.oneOf(["desktop", "mobile"]).isRequired,
 };
 
 GridContainer.propTypes = {

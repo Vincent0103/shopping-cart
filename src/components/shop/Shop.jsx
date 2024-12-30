@@ -130,7 +130,14 @@ const Shop = () => {
 Li.propTypes = {
   text: PropTypes.string.isRequired,
   linkTo: PropTypes.string.isRequired,
+  deviceType: PropTypes.oneOf(["desktop", "mobile"]).isRequired,
   isSelected: PropTypes.bool,
+};
+
+Ul.propTypes = {
+  name: PropTypes.string.isRequired,
+  deviceType: PropTypes.oneOf(["desktop", "mobile"]).isRequired,
+  containerStyle: PropTypes.string,
 };
 
 export default Shop;
