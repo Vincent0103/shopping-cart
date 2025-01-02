@@ -1,3 +1,4 @@
+import { Navigate } from "react-router-dom";
 import App from "./App";
 import Home from "./components/home/Home";
 import Shop from "./components/shop/Shop";
@@ -9,8 +10,9 @@ const routes = [
   {
     path: "/",
     element: <App />,
-    errorElement: <App hasError />,
+    errorElement: <Navigate to={"/error"} replace />,
     children: [
+      { path: "/error", element: <ErrorPage /> },
       { path: "/home", element: <Home /> },
       { path: "/shop?/:name", element: <Shop /> },
       { path: "/product/:id", element: <Product /> },
