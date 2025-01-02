@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import Category from "./Category";
 import PropTypes from "prop-types";
+import ErrorPage from "../ErrorPage";
 
 const Li = ({ text, linkTo, deviceType, isSelected = false }) =>
   deviceType === "desktop" ? (
@@ -33,7 +34,7 @@ const Ul = ({ name, containerStyle, deviceType }) => (
       deviceType={deviceType}
       text={"All"}
       linkTo={"/shop"}
-      isSelected={name === ""}
+      isSelected={name === "shop"}
     />
     <Li
       deviceType={deviceType}
@@ -63,9 +64,9 @@ const Ul = ({ name, containerStyle, deviceType }) => (
 );
 
 const Shop = () => {
-  let { name } = useParams();
-
+  let { name } = useParams() || null;
   const validCategories = [
+    "shop",
     "electronics",
     "jewelry",
     "mens-clothing",
@@ -73,8 +74,9 @@ const Shop = () => {
   ];
 
   name = name.split("/")[0];
-  if (!validCategories.includes(name)) name = "";
+  if (!validCategories.includes(name)) return <ErrorPage />;
 
+  console.log(name);
   return (
     <div className="size-full">
       <div className="relative top-20 size-full max-sm:top-16">

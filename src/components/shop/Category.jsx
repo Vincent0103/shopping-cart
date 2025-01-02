@@ -4,7 +4,7 @@ import Loader from "../fetchUtils/Loader";
 import ErrorShower from "../fetchUtils/ErrorShower";
 import useData from "../fetchUtils/Fetch";
 
-const Category = ({ categoryName = "" }) => {
+const Category = ({ categoryName }) => {
   const categoriesMapper = {
     electronics: "electronics",
     jewelry: "jewelery",
@@ -13,7 +13,7 @@ const Category = ({ categoryName = "" }) => {
   };
 
   const url =
-    categoryName === ""
+    categoryName === "shop"
       ? "https://fakestoreapi.com/products"
       : `https://fakestoreapi.com/products/category/${categoriesMapper[categoryName]}`;
 
@@ -35,7 +35,7 @@ const Category = ({ categoryName = "" }) => {
 };
 
 Category.propTypes = {
-  categoryName: PropTypes.string,
+  categoryName: PropTypes.string.isRequired,
 };
 
 export default Category;

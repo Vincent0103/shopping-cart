@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { AppProvider } from "./AppContext";
-import { Outlet, useLocation } from "react-router-dom";
+import { Navigate, Outlet, useLocation, useOutlet } from "react-router-dom";
 import Navbar from "./components/nav/Navbar";
 
 function App() {
   const [displayedPageName, setDisplayedPageName] = useState("/home");
+  const outlet = useOutlet();
   const location = useLocation();
 
   useEffect(() => {
@@ -16,7 +17,7 @@ function App() {
       <>
         <Navbar displayedPageName={displayedPageName} />
         <main className="flex flex-col items-center justify-center">
-          <Outlet />
+          {outlet ? <Outlet /> : <Navigate to={"/home"} replace />}
         </main>
       </>
     </AppProvider>
