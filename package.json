@@ -12,27 +12,25 @@
   },
   "dependencies": {
     "immer": "^10.1.1",
-    "lucide-react": "^0.428.0",
+    "lucide-react": "^0.469.0",
     "prop-types": "^15.8.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.28.1"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.1.1"
   },
   "devDependencies": {
-    "@eslint/js": "^9.17.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@testing-library/user-event": "^14.5.2",
-    "@types/react": "^18.3.18",
-    "@types/react-dom": "^18.3.5",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
     "@vitejs/plugin-react-swc": "^3.7.2",
     "autoprefixer": "^10.4.20",
     "cssnano": "^7.0.6",
-    "eslint": "8.2.0",
+    "eslint": "^9.17.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-import": "^0.13.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-import": "2.25.2",
+    "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-promise": "^7.2.1",
     "eslint-plugin-react": "^7.37.3",
     "eslint-plugin-react-hooks": "^5.1.0",
@@ -43,7 +41,7 @@
     "postcss": "^8.4.49",
     "prettier-plugin-tailwindcss": "^0.6.9",
     "tailwindcss": "^3.4.17",
-    "vite": "^5.4.11",
+    "vite": "^6.0.7",
     "vitest": "^2.1.8"
   }
 }
