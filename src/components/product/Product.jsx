@@ -47,6 +47,13 @@ const Product = () => {
     );
   };
 
+  const categoriesUrlMapper = {
+    electronics: "electronics",
+    jewelery: "jewelry",
+    "men's clothing": "mens-clothing",
+    "women's clothing": "womens-clothing",
+  };
+
   if (isLoading) return <Loader />;
   else if (errorMessage) return <ErrorShower errorMsg={errorMessage} />;
   else if (productInfos) {
@@ -61,7 +68,7 @@ const Product = () => {
         >
           <nav className="self-start" aria-label="Previous links">
             <ul className="flex text-lg font-light text-zinc-500">
-              <Link to={`/shop/${productInfos.category}`}>
+              <Link to={`/shop/${categoriesUrlMapper[productInfos.category]}`}>
                 <li className="underline">
                   {toTitle(productInfos.category) || "All"}
                 </li>

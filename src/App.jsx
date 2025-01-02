@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { AppProvider } from "./AppContext";
 import { Navigate, Outlet, useLocation, useOutlet } from "react-router-dom";
 import Navbar from "./components/nav/Navbar";
+import PropTypes from "prop-types";
+import ErrorPage from "./components/ErrorPage";
 
-function App() {
+function App({ hasError = false }) {
   const [displayedPageName, setDisplayedPageName] = useState("/home");
   const outlet = useOutlet();
   const location = useLocation();
@@ -17,11 +19,21 @@ function App() {
       <>
         <Navbar displayedPageName={displayedPageName} />
         <main className="flex flex-col items-center justify-center">
-          {outlet ? <Outlet /> : <Navigate to={"/home"} replace />}
+          {hasError ? (
+            <ErrorPage />
+          ) : outlet ? (
+            <Outlet />
+          ) : (
+            <Navigate to={"/home"} replace />
+          )}
         </main>
       </>
     </AppProvider>
   );
 }
+
+App.propTypes = {
+  hasError: PropTypes.bool,
+};
 
 export default App;
