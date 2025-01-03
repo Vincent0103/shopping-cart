@@ -76,7 +76,6 @@ const Shop = () => {
   name = name.split("/")[0];
   if (!validCategories.includes(name)) return <ErrorPage />;
 
-  console.log(name);
   return (
     <div className="size-full">
       <div className="relative top-20 size-full max-sm:top-16">
